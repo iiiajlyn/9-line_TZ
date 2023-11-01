@@ -3,7 +3,7 @@
 	transform: translateY(40px);
 	transition: 1.5s;
 
-	&.a-view {
+	&.is-view {
 		opacity: 1;
 		transform: translateY(0px);
 	}
@@ -14,7 +14,7 @@
 	transform: scale(0.5);
 	transition: 1.5s;
 
-	&.a-view {
+	&.is-view {
 		opacity: 1;
 		transform: scale(1);
 	}
@@ -25,7 +25,7 @@
 	transform: translateX(-80px);
 	transition: 1.5s;
 
-	&.a-view {
+	&.is-view {
 		opacity: 1;
 		transform: translateX(0px);
 	}
@@ -43,7 +43,7 @@
 		transform: translateX(-80px);
 	}
 
-	&.a-view {
+	&.is-view {
 		opacity: 1;
 		transform: translateX(0px);
 	}
