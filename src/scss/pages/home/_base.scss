@@ -65,6 +65,11 @@ h2 {
 	position: relative;
 }
 
+.is-browser-ie {
+	height: 100vh;
+	overflow: hidden;
+}
+
 .info-browser-ie {
 	height: 100vh;
 	position: fixed;
