@@ -9,6 +9,7 @@ append vars
 	- meta.ogTitle = title
 	- meta.ogImage = image
 	- meta.ogDescription = description
+	- meta.ogUrl ='https://test.abyshev.com/'
 	- meta.description =  description
 	- meta.keywords = 'Фронтенд разработчик, Портфолио, Анкета, Резюме'
 	- meta.msapplicationTileColor = '#9f00a7'
@@ -22,7 +23,10 @@ append vars
 	- link.manifest = `${baseDir}site.webmanifest`
 	- link.maskIcon.href = `${baseDir}images/favicon/safari-pinned-tab.svg`
 	- link.maskIcon.color = '#740179'
-	- link.themeColor = '#fafafa'
+	- meta.themeColor = '#fafafa'
+	- meta.ttwitterTitle = title
+	- meta.twitterDescription = description
+	- meta.twitterImage = image
 
 block content
 	.site
