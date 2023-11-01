@@ -1,0 +1,90 @@
+.about-user {
+	&__info {
+		@include desktop {
+			grid-column: 1/3;
+		}
+
+		@include devices {
+			grid-column: 1/5
+		}
+	}
+
+	&__contact {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		gap: 15px;
+
+		@include desktop {
+			grid-column: 4/5;
+		}
+
+		@include devices {
+			grid-column: 1/5
+		}
+	}
+
+	&::before {
+		content: '';
+		height: 100%;
+		z-index: -1;
+		position: absolute;
+		background-repeat: no-repeat;
+		background-position: bottom;
+		background-size: 100% auto;
+
+		@include desktop {
+			width: 100%;
+			background-image: url("/images/pages/home/aboutBg.svg");
+			bottom: -270px;
+		}
+
+		@include devices {
+			width: calc(100% + 40px);
+			transform: translateX(-20px);
+			background-image: url("/images/pages/home/aboutBg@mob.svg");
+			bottom: -65px;
+		}
+	}
+}
+
+.info-about-user {
+	&__title {
+		@include desktop {
+			margin-top: 40px;
+			margin-bottom: 30px;
+		}
+
+		@include devices {
+			margin-top: 30px;
+			margin-bottom: 20px;
+		}
+	}
+
+	&__logo {
+		@include desktop {
+			width: 150px;
+			height: 150px;
+		}
+
+		@include devices {
+			width: 80px;
+			height: 80px;
+		}
+	}
+}
+
+.contact-about-user {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	@include desktop {
+		margin-top: 80px;
+	}
+
+	@include devices {
+		margin-top: 4px;
+	}
+}

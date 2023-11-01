@@ -1,0 +1,32 @@
+extends pug/base
+
+prepend vars
+
+append vars
+	- title = 'Иван Frontend разработчик'
+	- description = 'Как разработчик, я высоко ценю способность воплотить видение дизайнера в жизнь, что считаю очень полезным для бизнеса. Я получаю огромное удовлетворение, наблюдая за работой от идеи до дизайна, особенно когда она появляется в руках пользователя. Я считаю, что ориентированные на пользователя решения являются наиболее ценными цифровыми ресурсами будущего.'
+	- image = `${baseDir}images/base/share.jpg`
+	- meta.ogTitle = title
+	- meta.ogImage = image
+	- meta.ogDescription = description
+	- meta.description =  description
+	- meta.keywords = 'Фронтенд разработчик, Портфолио, Анкета, Резюме'
+	- meta.msapplicationTileColor = '#9f00a7'
+	- link.appleTouchIconPrecomposed180x180 = `${baseDir}images/favicon/apple-touch-icon.png`
+	- link.appleTouchIcon180x180 = `${baseDir}images/favicon/apple-touch-icon.png`
+	- link.appleTouchIcon = `${baseDir}images/favicon/apple-touch-icon.png`
+	- link.icon192x192 = `${baseDir}images/favicon/android-chrome-192x192.png`
+	- link.icon32x32 = `${baseDir}images/favicon/favicon-32x32.png`
+	- link.icon16x16 = `${baseDir}images/favicon/favicon-16x16.png`
+	- link.icon = `${baseDir}images/favicon/favicon.ico`
+	- link.manifest = `${baseDir}site.webmanifest`
+	- link.maskIcon.href = `${baseDir}images/favicon/safari-pinned-tab.svg`
+	- link.maskIcon.color = '#740179'
+	- link.themeColor = '#fafafa'
+
+block content
+	.site
+		include pug/data
+		include pug/layout/header
+		include pug/pages/home
+		include pug/layout/footer

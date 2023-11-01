@@ -1,0 +1,61 @@
+@mixin fa-color($color) {
+	border-color: mix($color, #fff, 50%);
+	background: conic-gradient(from 225deg at 94.19% 5.24%, mix($color, #fff, 75%) 0deg, $color 360deg);
+}
+
+.fa-box {
+	transform: rotate(180deg);
+	display: inline-flex;
+	padding: 3px 0;
+
+	.fa-rhomb {
+		transform: rotate(135deg);
+	}
+}
+
+.fa-rhomb {
+	display: inline-block;
+	width: 28px;
+	height: 28px;
+	transform: rotate(-45deg);
+	border-radius: 8px;
+	border: 4px solid;
+	border-color: #9d9d9d;
+	background: conic-gradient(from 225deg at 94.19% 5.24%, #545454 0deg, #222222 360deg);
+
+	&[class*="sm"] {
+		width: 12px;
+		height: 12px;
+		border: none;
+		border-radius: 3px;
+		margin: 0 3px;
+	}
+
+	&[class*="lilac"] {
+		@include fa-color(#938DF8)
+	}
+
+	&[class*="blue"] {
+		@include fa-color(#4BBEF2)
+	}
+
+	&[class*="yellow"] {
+		@include fa-color(#FFCD3D)
+	}
+
+	&[class*="pink"] {
+		@include fa-color(#EE5087)
+	}
+
+	&[class*="orange"] {
+		@include fa-color(#FFA25A)
+	}
+
+	&[class*="aqua"] {
+		@include fa-color(#3DC39B)
+	}
+
+	&+& {
+		margin-left: -5px;
+	}
+}

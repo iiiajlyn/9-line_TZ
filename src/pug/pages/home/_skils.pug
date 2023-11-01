@@ -1,0 +1,33 @@
+section.section.skills#skills
+	.container
+		h2.skills__title(data-scroll data-scroll-speed="-0.02" data-scroll-repeat data-scroll-class="a-view")
+			| Навыки
+		ul.skills__row
+			li.skills__item.a-top(itemprop="awards" data-scroll data-scroll-repeat data-scroll-to-duration="2" data-scroll-class="a-view")
+				h3.skills__subtitle
+					| Adobe Creative Suite
+				p
+					| Photoshop, Illustrator, InDesign, XD, After Effects
+			li.skills__item.a-top(itemprop="awards" data-scroll data-scroll-repeat data-scroll-class="a-view")
+				h3.skills__subtitle
+					| Prototyping
+				p
+					| Sketch, Figma, InVision, Marvel, Principle, Balsamiq
+			li.skills__item.a-top(itemprop="awards" data-scroll data-scroll-repeat data-scroll-class="a-view")
+				h3.skills__subtitle
+					| Additional
+				p
+					| HTML, CSS, Google Analytics, Keynote, Miro
+			li.skills__item.a-top(itemprop="awards" data-scroll data-scroll-repeat data-scroll-class="a-view")
+				h3.skills__subtitle
+					| Languages
+				p
+					| Conversational English and Native Russian
+
+		+lazyPicture({
+			src: `${baseDir}images/pages/home/handsLike`,
+			alt: 'I love you',
+			type: 'png',
+			device: true,
+			retina: true,
+		}).skills__img.a-scale(data-scroll data-scroll-repeat data-scroll-class="a-view")

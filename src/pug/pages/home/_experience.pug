@@ -1,0 +1,230 @@
+section.section.experience#experience
+	.container.row
+		.experience__work.work-experience
+			h2.work-experience__title.a-top(data-scroll data-scroll-repeat data-scroll-class="a-view")
+				| Опыт работы
+			.work-experience__row
+				.work-experience__item.a-left(data-scroll data-scroll-repeat data-scroll-class="a-view")
+					.work-experience__date
+						p
+							| Июль 2019
+					.work-experience__post
+						strong(itemprop="jobTitle")
+							| Freelance Designer
+						.fa-box
+							i.fa-rhomb.is-sm-blue
+							i.fa-rhomb.is-sm-yellow
+							i.fa-rhomb.is-sm-lilac
+					.work-experience__company
+						p.work-experience__place(itemprop="worksFor")
+							span
+								| Netherlands, Worldwide
+					.work-experience__done(itemprop="makesOffer")
+						p
+							| Available for a&nbsp;project or&nbsp;job in&nbsp;UX/UI, Visual and Product design.
+						ul.work-experience__link
+							li
+								a(href="/" target="_blank" rel="noopener noreferrer").link
+									| Commercial tryouts
+							li
+								a(href="/" target="_blank" rel="noopener noreferrer").link
+									| Personal projects
+
+				.work-experience__item.a-left(data-scroll data-scroll-repeat data-scroll-class="a-view")
+					.work-experience__date
+						p
+							| Январь 2017 - Сентябрь 2018
+					.work-experience__post
+						strong(itemprop="jobTitle")
+							| Digital Designer
+						.fa-box
+							i.fa-rhomb.is-sm-pink
+							i.fa-rhomb.is-sm-blue
+					.work-experience__company
+						i.work-experience__logo.is-solutions
+						p.work-experience__place(itemprop="worksFor")
+							span.text-bold
+								| J Creative Solutions
+							span
+								| Digital agency in Minsk, Belarus
+					.work-experience__done(itemprop="makesOffer")
+						p
+							| Created visuals for digital marketing channels such as&nbsp;social media, promo web and
+							| online 	ads. Developed visual language from scratch or&nbsp;following the branding guidelines.
+							| Designed presentations for clients and indoor purposes.
+						ul.work-experience__link
+							li
+								a(href="/" target="_blank" rel="noopener noreferrer").link
+									| Agency projects
+
+				.work-experience__item.a-left(data-scroll data-scroll-repeat data-scroll-class="a-view")
+					.work-experience__date
+						p
+							| Март 2014 - Февраль 2017
+					.work-experience__post
+						strong(itemprop="jobTitle")
+							| SEO Specialist → Lead SEO Specialist
+						.fa-box
+							i.fa-rhomb.is-sm-blue
+							i.fa-rhomb.is-sm-orange
+					.work-experience__company
+						i.work-experience__logo.is-oz
+						p.work-experience__place(itemprop="worksFor")
+							span.text-bold
+								| OZ.by
+							span
+								| Online bookstore in Minsk, Belarus
+					.work-experience__done(itemprop="makesOffer")
+						p
+							| Improved website performance and user experience of&nbsp;the biggest online bookstore&nbsp;OZ
+							| in&nbsp;Belarus, being a&nbsp;part of&nbsp;the marketing team, I&nbsp;interpreted
+							| Google Analytics data to&nbsp;IT, content and marketing colleagues. Advised on&nbsp;tech
+							| and content optimization strategy, automated processes, provided reports, increased
+							| organic traffic up&nbsp;to&nbsp;150%.
+						ul.work-experience__link
+							li
+								a(href="/" target="_blank" rel="noopener noreferrer").link
+									| Annual company report 2016
+
+				.work-experience__item.a-left(data-scroll data-scroll-repeat data-scroll-class="a-view")
+					.work-experience__date
+						p
+							| Август 2012 - Ноябрь 2013
+					.work-experience__post
+						strong(itemprop="jobTitle")
+							| Content Specialist
+						.fa-box
+							i.fa-rhomb.is-sm-orange
+					.work-experience__company
+						i.work-experience__logo.is-21vek
+						p.work-experience__place(itemprop="worksFor")
+							span.text-bold
+								| 21vek.by
+							span
+								| E-commerce store in Minsk, Belarus
+					.work-experience__done(itemprop="makesOffer")
+						p
+							| Added and modified the product information, prepared images and text for the website,
+							| developed categories filters, ensure all info is&nbsp;correct in&nbsp;the catalogue with
+							| the goal of&nbsp;improving online shopper experience.
+
+				.work-experience__item.a-left(data-scroll data-scroll-repeat data-scroll-class="a-view")
+					.work-experience__date
+						p
+							| Август 2011 - Ноябрь 2014
+					.work-experience__post
+						strong(itemprop="jobTitle")
+							| Software Support Engineer
+						.fa-box
+							i.fa-rhomb.is-sm-aqua
+					.work-experience__company
+						i.work-experience__logo.is-integral
+						p.work-experience__place(itemprop="worksFor")
+							span.text-bold
+								| Integral
+							span
+								| Microelectronics factory in Minsk, Belarus
+					.work-experience__done(itemprop="makesOffer")
+						p
+							| Supported retail accounting system LS&nbsp;Trade, troubleshoot technical problems.
+
+		.experience__picture.picture-experience
+			.picture-experience__box
+				+lazyPicture({
+					src: `${baseDir}images/pages/home/manMagic`,
+					alt: 'Magic man',
+					type: 'png',
+					device: true,
+					retina: true,
+				}).picture-experience__img.a-top(data-scroll data-scroll-repeat data-scroll-class="a-view")
+
+		.experience__education.education-experience
+			h2.education-experience__title.a-top(data-scroll data-scroll-repeat data-scroll-class="a-view")
+				| Образование
+			.education-experience__row
+				.education-experience__item.a-right(
+						itemprop="hasOccupation"
+						data-scroll
+						data-scroll-repeat
+						data-scroll-class="a-view"
+					)
+					i.education-experience__logo.is-experience
+					p.text-bold
+						| Interface Design:
+						br
+						| Web &amp;&nbsp;Mobile
+					p
+						| IT-Academy, 2020
+
+				.education-experience__item.a-right(
+					itemprop="hasOccupation"
+					data-scroll
+					data-scroll-repeat
+					data-scroll-class="a-view"
+				)
+					i.fa-rhomb.fa-rhomb--yellow
+					p.text-bold
+						| Fundamentals
+						br
+						| of Usability
+					p
+						| Skillshare, Oct 2018
+
+				.education-experience__item.a-right(
+					itemprop="hasOccupation"
+					data-scroll
+					data-scroll-repeat
+					data-scroll-class="a-view"
+				)
+					i.fa-rhomb.fa-rhomb--pink
+					p.text-bold
+						| CG Artist
+					p
+						| Polygon CG School,
+						br
+						| May-Sep 2017
+
+				.education-experience__item.a-right(
+					itemprop="hasOccupation"
+					data-scroll
+					data-scroll-repeat
+					data-scroll-class="a-view"
+				)
+					i.fa-rhomb.fa-rhomb--blue
+					p.text-bold
+						| Graphic Design
+					p
+						| Belarusian State Academy of Arts,
+						br
+						| 2015 - 2017 Postgraduate Diploma
+
+				.education-experience__item.a-right(
+					itemprop="hasOccupation"
+					data-scroll
+					data-scroll-repeat
+					data-scroll-class="a-view"
+				)
+					i.fa-rhomb.fa-rhomb--orange
+					p.text-bold
+						| SEO Specialist
+					p
+						| ARTOX Media,
+						br
+						| Jun-Aug 2012
+
+				.education-experience__item.a-right(
+					itemprop="hasOccupation"
+					data-scroll
+					data-scroll-repeat
+					data-scroll-class="a-view"
+				)
+					i.fa-rhomb.fa-rhomb--aqua
+					p.text-bold
+						| Information Technology Software
+					p
+						| Belarusian State University of&nbsp;Informatics and Radioelectronics,
+						| 2011&nbsp;&mdash;&nbsp;2015
+						br
+						| Bachelor&rsquo;s degree
+					p
+						| Polotsk State Economic College, 2007&nbsp;&mdash; 2011 Associate&rsquo;s degree

@@ -1,0 +1,22 @@
+import './vendor';
+import './helpers';
+import './components/social';
+import {ieFix} from './vendor/ie-fix';
+import {vhFix} from './vendor/vh-fix';
+import locomotive from './vendor/locomotiveScroll';
+import {actualYear} from './modules/actualYear';
+import header from './components/header';
+import lazyLoading from './modules/lazyLoading';
+import ancoreTop from './components/ancoreTop';
+import preloader from './components/preloader';
+import ie from './components/ie';
+
+ieFix();
+vhFix();
+actualYear();
+ie.init();
+header.init();
+lazyLoading.init();
+ancoreTop.init();
+locomotive.init();
+preloader.init();

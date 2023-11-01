@@ -1,0 +1,85 @@
+.ancore-top {
+	position: fixed;
+	z-index: 10;
+	transition: $duration-normal;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+	@include desktop {
+		width: 48px;
+		height: 48px;
+		bottom: 25px;
+		right: 25px;
+	}
+
+	@include devices {
+		bottom: 20px;
+		right: 20px;
+		width: 30px;
+		height: 30px;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background-color: rgba($color-white, 0.5);
+		z-index: -1;
+		backdrop-filter: blur(2px);
+	}
+
+	&__value {
+		position: absolute;
+		opacity: 1;
+		transition: $duration-normal;
+
+		@include devices {
+			font-size: 10px;
+		}
+	}
+
+	&__arrow {
+		position: absolute;
+		opacity: 0;
+		transition: $duration-normal;
+	}
+
+	&.js-page-end {
+		bottom: 90px;
+
+		.ancore-top__value {
+			opacity: 0;
+		}
+
+		.ancore-top__arrow {
+			opacity: 1;
+		}
+	}
+
+	&__animation {
+		position: fixed;
+		height: calc(100vh + 300px);
+		top: -300px;
+		right: 0px;
+		z-index: 10;
+		overflow: hidden;
+		display: none;
+	}
+
+	// &__rocket {
+	// 	position: relative;
+	// 	top: 100%;
+	// 	@include sprite("rocket");
+	// }
+
+	// &.ancore-top-animation {
+	// 	.ancore-top__animation {
+	// 		display: block;
+	// 	}
+	// }
+}

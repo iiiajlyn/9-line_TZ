@@ -1,0 +1,56 @@
+section.section.about-user#about-user
+	.container.row
+		.about-user__info.info-about-user
+			+lazyPicture({
+				src: `${baseDir}images/base/logo`,
+				alt: 'Логотип',
+				type: 'png',
+				device: true,
+				retina: true,
+			}).info-about-user__logo.a-top(
+					itemprop="image"
+					data-scroll
+					data-scroll-speed="-0.05"
+					data-scroll-class="a-view"
+				)
+
+			h1.info-about-user__title.a-top(
+					itemprop="name"
+					data-scroll
+					data-scroll-speed="0.2"
+					data-scroll-class="a-view"
+				)
+				| Иван
+				br
+				| Frontend разработчик
+
+			p.info-about-user__text.a-top(
+					itemprop="description"
+					data-scroll
+					data-scroll-speed="0.35"
+					data-scroll-class="a-view"
+				)
+				| Как разработчик, я&nbsp;высоко ценю способность воплотить видение дизайнера в&nbsp;жизнь,
+				| что считаю очень полезным для бизнеса. Я&nbsp;получаю огромное удовлетворение, наблюдая
+				| за&nbsp;работой от&nbsp;идеи до&nbsp;дизайна, особенно когда она появляется в&nbsp;руках пользователя.
+				| Я&nbsp;считаю, что ориентированные на&nbsp;пользователя решения являются наиболее ценными
+				| цифровыми ресурсами будущего.
+
+		address.about-user__contact.a-top(data-scroll data-scroll-class="a-view" data-scroll-speed="0.05")
+			ul.contact-about-user(itemprop="contactPoint")
+				li.contact-about-user__item(itemprop="email")
+					a(href="mailto:xxvxx@list.ru")
+						| xxvxx@list.ru
+				li.contact-about-user__item(itemprop="telephone")
+					a(href="tel:+79629411116")
+						| +7 (962) 941-11-16
+				li.contact-about-user__item(itemprop="address")
+					a(href="https://yandex.ru/maps/-/CDar7C1A" target="_blank")
+						| г.Москва
+			.share-social
+				button.share-social__button(data-social="facebook" aria-label="Поделится в facebook" type="button")
+					+svg('soc-fb').share-social__img
+				button.share-social__button(data-social="vk" aria-label="Поделится в vk" type="button")
+					+svg('soc-vk').share-social__img
+				button.share-social__button(data-social="telegram" aria-label="Поделится в telegram" type="button")
+					+svg('soc-tg').share-social__img

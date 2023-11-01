@@ -1,0 +1,27 @@
+::-webkit-scrollbar-button {
+	background-image: url('');
+	background-repeat: no-repeat;
+	width: 7px;
+	height: 7px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: $color-white;
+
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: $color-black;
+	box-shadow: 0px 0px 0px transparent inset;
+	border-radius: 100px;
+}
+
+::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+}
+
+:root {
+	scrollbar-color: $color-black $color-white;
+	scrollbar-width: thin;
+}

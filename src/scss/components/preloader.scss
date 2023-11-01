@@ -1,0 +1,17 @@
+.preloader {
+	position: fixed;
+	width: calc(100vw + 591px);
+	height: calc(100vh + 591px);
+	background-color: $color-white;
+	z-index: 1000;
+	top: 0;
+	left: -591px;
+
+	.man-rocket {
+		content: '';
+		position: absolute;
+		left: 0%;
+		bottom: 0%;
+		@include sprite("manRocket");
+	}
+}
