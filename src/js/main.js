@@ -1,7 +1,7 @@
 import './vendor';
 import './helpers';
 import './components/social';
-// import {ieFix} from './vendor/ie-fix';
+// // import {ieFix} from './vendor/ie-fix';
 import {vhFix} from './vendor/vh-fix';
 import locomotive from './vendor/locomotiveScroll';
 import header from './components/header';
@@ -10,11 +10,11 @@ import ancoreTop from './components/ancoreTop';
 import preloader from './components/preloader';
 import ie from './components/ieModal';
 
-// ieFix();
-vhFix();
-ie.init();
+// // ieFix();
+locomotive.init();
 header.init();
 lazyLoading.init();
 ancoreTop.init();
-locomotive.init();
 preloader.init();
+vhFix();
+ie.init();

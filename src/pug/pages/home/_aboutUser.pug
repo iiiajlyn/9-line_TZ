@@ -1,20 +1,23 @@
 section.section.about-user#about-user
 	.container.row
 		.about-user__info.info-about-user
-			+lazyPicture({
-				src: `${baseDir}images/base/logo`,
-				alt: 'Логотип',
-				type: 'png',
-				device: true,
-				retina: true,
-				webp: true
-			}).info-about-user__logo.a-top(
-					itemprop="image"
-					data-scroll
-					data-scroll-speed="-0.05"
-					data-scroll-class="is-view"
+			picture.info-about-user__logo.a-top(
+				itemprop="image"
+				data-scroll
+				data-scroll-speed="-0.05"
+				data-scroll-class="is-view"
+			)
+				source(
+					srcset="./images/base/logo.webp, ./images/base/logo@2x.webp 2x"
+					media="(min-width: 1025px)"
+					type="image/webp"
 				)
-
+				source(
+					srcset="./images/base/logo@mob.webp, ./images/base/logo@mob2x.webp 2x"
+					media="(max-width: 1024px)"
+					type="image/webp"
+				)
+				img(alt="Логотип" src="./images/base/logo.png")
 			h1.info-about-user__title.a-top(
 					itemprop="name"
 					data-scroll

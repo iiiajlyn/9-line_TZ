@@ -266,8 +266,9 @@ gulp.task('js', () => {
 			errorHandler,
 		}))
 		.pipe($.webpackStream(webpackConfig))
-		.pipe($.if(argv.minifyJs, $.uglifyEs.default().on('error', console.error)))
+		.pipe($.stripComments())
 		.pipe($.sourcemaps.init())
+		.pipe($.if(argv.minifyJs, $.uglifyEs.default().on('error', console.error)))
 		.pipe($.sourcemaps.write('.'))
 		.pipe(gulp.dest(webpackConfig.output.path));
 });

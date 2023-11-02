@@ -11,14 +11,19 @@ function init() {
 	if (psi) {
 		let style = document.createElement('style');
 		style.innerHTML = '*{transition: none !important;}'
+		$('html').addClass('Chrome-Lighthouse');
 		$('html').prepend(style);
 		$.each($('[data-scroll-speed]'), function (index, value) {
 			value.removeAttribute('data-scroll-speed');
 		});
+	} else {
+		$('head').append('<link rel="stylesheet" href="/css/locomotiveScroll.css" type="text/css" />');
 	}
 
 	const scroll = new LocomotiveScroll({
-		smooth: true,
+		lenisOptions: {
+			wheelMultiplier: 0.7,
+		}
 	});
 
 	$('.ancore-top').on('click', () => {
