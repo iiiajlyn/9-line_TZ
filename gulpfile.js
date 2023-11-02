@@ -126,7 +126,7 @@ gulp.task('webp', () => {
 			extension: '.webp',
 		}))
 		.pipe($.webp())
-		.pipe(gulp.dest('buld/images'));
+		.pipe(gulp.dest('build/images'));
 });
 
 gulp.task('images', () => {
@@ -266,6 +266,9 @@ gulp.task('js', () => {
 			errorHandler,
 		}))
 		.pipe($.webpackStream(webpackConfig))
+		.pipe($.if(argv.minifyJs, $.uglifyEs.default().on('error', console.error)))
+		.pipe($.sourcemaps.init())
+		.pipe($.sourcemaps.write('.'))
 		.pipe(gulp.dest(webpackConfig.output.path));
 });
 
