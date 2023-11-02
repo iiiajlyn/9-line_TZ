@@ -8,7 +8,7 @@ import header from './components/header';
 import lazyLoading from './modules/lazyLoading';
 import ancoreTop from './components/ancoreTop';
 import preloader from './components/preloader';
-import ie from './components/ie';
+import ie from './components/ieModal';
 
 // ieFix();
 vhFix();

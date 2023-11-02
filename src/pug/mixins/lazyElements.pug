@@ -34,7 +34,7 @@ mixin lazyImage(data)
 		).class(attrs)
 mixin lazyPicture(data, source)
 	if data.type
-		- var imgUrl = data.src + '.' + data.type
+		- var imgUrl = `${data.src}.${data.type}`
 	else
 		- var imgUrl = data.src
 
@@ -50,7 +50,8 @@ mixin lazyPicture(data, source)
 					media=object && object.media ? object.media : null
 					type=object && object.media ? object.type : null
 				)
-
+		if data.webp
+			- data.type = 'webp'
 		if data.retina
 			source(
 				srcset=`

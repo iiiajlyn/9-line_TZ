@@ -119,6 +119,16 @@ gulp.task('copy', () => {
 		.pipe(gulp.dest('build'));
 });
 
+gulp.task('webp', () => {
+	return gulp.src('src/images/**/*.+(png|jpg|jpeg)')
+		.pipe($.plumber())
+		.pipe($.changed('src/images', {
+			extension: '.webp',
+		}))
+		.pipe($.webp())
+		.pipe(gulp.dest('buld/images'));
+});
+
 gulp.task('images', () => {
 	return gulp.src('src/images/**/*.*')
 		.pipe($.if(argv.cache, $.newer('build/images')))
@@ -138,6 +148,8 @@ gulp.task('sprites:png', () => {
 			imgName: 'sprites.png',
 			retinaImgName: 'sprites@2x.png',
 			retinaSrcFilter: 'src/images/sprites/png/*@2x.png',
+			imgNameWebp: 'sprites.webp',
+			retinaImgNameWebp: 'sprites@2x.webp',
 			padding: 2,
 		}));
 
@@ -148,6 +160,7 @@ gulp.task('sprites:png', () => {
 			}))
 			.pipe($.vinylBuffer())
 			.pipe($.imagemin())
+			.pipe($.webp())
 			.pipe(gulp.dest('build/images')),
 		spritesData.css
 			.pipe(gulp.dest('src/scss')),
@@ -474,6 +487,7 @@ gulp.task('build', gulp.series(
 	'robots',
 	gulp.parallel(
 		'images',
+		'webp',
 		'sprites:png',
 		'sprites:svg',
 		'scss',
