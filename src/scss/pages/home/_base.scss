@@ -14,13 +14,6 @@
 		width: 100vw;
 		overflow-x: hidden;
 	}
-
-	@include supports-safe-area-insets {
-		padding-top: max(12px, env(safe-area-inset-top));
-		padding-right: max(12px, env(safe-area-inset-right));
-		padding-bottom: max(12px, env(safe-area-inset-bottom));
-		padding-left: max(12px, env(safe-area-inset-left));
-	}
 }
 
 h1 {
@@ -70,6 +63,7 @@ h2 {
 
 .section {
 	position: relative;
+	padding: env(safe-area-inset-right, 12px) env(safe-area-inset-left, 12px);
 }
 
 .is-browser-ie {
