@@ -34,17 +34,7 @@ body {
 	font-size: 14px;
 	font-weight: 400;
 	line-height: $line-height-primary;
-
-	@include supports-safe-area-insets {
-		body {
-			padding-top: max(12px, env(safe-area-inset-top));
-			padding-right: max(12px, env(safe-area-inset-right));
-			padding-bottom: max(12px, env(safe-area-inset-bottom));
-			padding-left: max(12px, env(safe-area-inset-left));
-		}
-	}
 }
-
 main {
 	flex: 1;
 }

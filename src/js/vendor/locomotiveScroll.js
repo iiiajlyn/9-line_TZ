@@ -20,11 +20,7 @@ function init() {
 		$('head').append('<link rel="stylesheet" href="/css/locomotiveScroll.css" type="text/css" />');
 	}
 
-	const scroll = new LocomotiveScroll({
-		lenisOptions: {
-			wheelMultiplier: 0.7,
-		}
-	});
+	const scroll = new LocomotiveScroll();
 
 	$('.ancore-top').on('click', () => {
 		scroll.scrollTo('top')
