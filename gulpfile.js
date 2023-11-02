@@ -1,10 +1,12 @@
-let gulp = require('gulp');
-let gulpLoadPlugins = require('gulp-load-plugins');
-let yargs = require('yargs');
-let path = require('path');
-let del = require('del');
-let webpackConfig = require('./webpack.config');
-let sass = require('gulp-sass')(require('sass'));
+const gulp = require('gulp');
+const gulpLoadPlugins = require('gulp-load-plugins');
+const yargs = require('yargs');
+const path = require('path');
+const del = require('del');
+const webpackConfig = require('./webpack.config');
+const sass = require('gulp-sass')(require('sass'));
+const zlib = require('zlib');
+const gulpBrotli = require('gulp-brotli');
 
 let emittyPug;
 let errorHandler;
@@ -273,6 +275,47 @@ gulp.task('js', () => {
 		.pipe(gulp.dest(webpackConfig.output.path));
 });
 
+gulp.task('brotli:js', () => {
+	return gulp.src(webpackConfig.entry)
+		.pipe($.plumber({
+			errorHandler,
+		}))
+		.pipe($.webpackStream(webpackConfig))
+		.pipe($.stripComments())
+		.pipe($.if(argv.minifyJs, $.uglifyEs.default().on('error', console.error)))
+		.pipe(gulpBrotli({
+			params: {
+				[zlib.constants.BROTLI_PARAM_QUALITY]: zlib.constants.BROTLI_MAX_QUALITY,
+			},
+		}))
+		.pipe(gulp.dest(webpackConfig.output.path));
+});
+
+gulp.task('brotli:css', () => {
+	const postcssPlugins = [
+		$.autoprefixer({
+			grid: 'autoplace',
+		}),
+	];
+
+	return gulp.src([
+		'src/scss/*.scss',
+		'!src/scss/_*.scss',
+	])
+		.pipe($.plumber({
+			errorHandler,
+		}))
+		.pipe($.if(argv.debug, $.debug()))
+		.pipe(sass().on('error', sass.logError))
+		.pipe($.postcss(postcssPlugins))
+		.pipe(gulpBrotli({
+			params: {
+				[zlib.constants.BROTLI_PARAM_QUALITY]: zlib.constants.BROTLI_MAX_QUALITY,
+			},
+		}))
+		.pipe(gulp.dest('build/css'));
+});
+
 gulp.task('lint:pug', () => {
 	return gulp.src([
 		'src/*.pug',
@@ -489,6 +532,8 @@ gulp.task('build', gulp.series(
 	'pug',
 	'share',
 	'robots',
+	'brotli:css',
+	'brotli:js',
 	gulp.parallel(
 		'images',
 		'webp',
