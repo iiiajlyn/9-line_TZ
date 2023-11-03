@@ -6,7 +6,6 @@ const del = require('del');
 const webpackConfig = require('./webpack.config');
 const sass = require('gulp-sass')(require('sass'));
 const zlib = require('zlib');
-const gulpBrotli = require('gulp-brotli');
 
 let emittyPug;
 let errorHandler;
@@ -282,8 +281,9 @@ gulp.task('brotli:js', () => {
 		}))
 		.pipe($.webpackStream(webpackConfig))
 		.pipe($.stripComments())
-		.pipe($.if(argv.minifyJs, $.uglifyEs.default().on('error', console.error)))
-		.pipe(gulpBrotli({
+		.pipe($.uglifyEs.default())
+		.pipe($.gzip())
+		.pipe($.brotli({
 			params: {
 				[zlib.constants.BROTLI_PARAM_QUALITY]: zlib.constants.BROTLI_MAX_QUALITY,
 			},
@@ -305,16 +305,49 @@ gulp.task('brotli:css', () => {
 		.pipe($.plumber({
 			errorHandler,
 		}))
-		.pipe($.if(argv.debug, $.debug()))
 		.pipe(sass().on('error', sass.logError))
 		.pipe($.postcss(postcssPlugins))
-		.pipe(gulpBrotli({
+		.pipe($.gzip())
+		.pipe($.brotli({
 			params: {
 				[zlib.constants.BROTLI_PARAM_QUALITY]: zlib.constants.BROTLI_MAX_QUALITY,
 			},
 		}))
 		.pipe(gulp.dest('build/css'));
 });
+
+gulp.task('gzip:js', () => {
+	return gulp.src(webpackConfig.entry)
+		.pipe($.plumber({
+			errorHandler,
+		}))
+		.pipe($.webpackStream(webpackConfig))
+		.pipe($.stripComments())
+		.pipe($.uglifyEs.default())
+		.pipe($.gzip())
+		.pipe(gulp.dest(webpackConfig.output.path));
+});
+
+gulp.task('gzip:css', () => {
+	const postcssPlugins = [
+		$.autoprefixer({
+			grid: 'autoplace',
+		}),
+	];
+
+	return gulp.src([
+		'src/scss/*.scss',
+		'!src/scss/_*.scss',
+	])
+		.pipe($.plumber({
+			errorHandler,
+		}))
+		.pipe(sass().on('error', sass.logError))
+		.pipe($.postcss(postcssPlugins))
+		.pipe($.gzip())
+		.pipe(gulp.dest('build/css'));
+});
+
 
 gulp.task('lint:pug', () => {
 	return gulp.src([
@@ -534,6 +567,8 @@ gulp.task('build', gulp.series(
 	'robots',
 	'brotli:css',
 	'brotli:js',
+	'gzip:css',
+	'gzip:js',
 	gulp.parallel(
 		'images',
 		'webp',
