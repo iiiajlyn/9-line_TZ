@@ -202,12 +202,12 @@
 				}
 
 				&:last-child {
-					transform: translate(0, -6px) rotate(45deg);
+					transform: translate(0, -7px) rotate(45deg);
 				}
 
 				&:not(:first-child):not(:last-child) {
 					opacity: 0;
-					height: 0;
+					transform: scaleY(0);
 				}
 			}
 		}

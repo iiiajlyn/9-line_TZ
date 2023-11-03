@@ -5,14 +5,14 @@
 		}
 
 		@include devices {
-			margin-bottom: 20px;
 			margin-top: 23px;
+			margin-bottom: 20px;
 		}
 	}
 
 	&__subtitle {
-		font-size: 14px;
 		font-weight: 700;
+		font-size: 14px;
 	}
 
 	&__row {
@@ -48,9 +48,9 @@
 
 		@include devices {
 			margin-top: 30px;
-			max-width: 375px;
 			width: 100%;
 			height: auto;
+			max-width: 375px;
 		}
 	}
 }

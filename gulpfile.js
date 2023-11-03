@@ -18,6 +18,7 @@ let argv = yargs.default({
 	minifyCss: true,
 	minifyJs: true,
 	minifySvg: true,
+	minifyImg: true,
 	notify: true,
 	open: true,
 	port: 3000,
@@ -111,6 +112,7 @@ gulp.task('copy', () => {
 		'src/resources/**/*.*',
 		'src/resources/**/.*',
 		'!src/resources/**/.keep',
+		'!src/resources/**/*.ttf',
 	], {
 		base: 'src/resources',
 		dot: true,
@@ -133,6 +135,18 @@ gulp.task('webp', () => {
 gulp.task('images', () => {
 	return gulp.src('src/images/**/*.*')
 		.pipe($.if(argv.cache, $.newer('build/images')))
+		.pipe($.if(argv.minifyImg, $.imagemin([
+			$.imagemin.gifsicle({
+				interlaced: true,
+			}),
+			$.imagemin.optipng({
+				optimizationLevel: 3,
+			}),
+			$.imageminMozjpeg({
+				progressive: true,
+				quality: 80,
+			}),
+		])))
 		.pipe($.if(argv.debug, $.debug()))
 		.pipe(gulp.dest('build/images'));
 });
@@ -224,6 +238,32 @@ gulp.task('pug', () => {
 	});
 });
 
+gulp.task('ttf:woff', () => {
+	return gulp.src('src/resources/fonts/**/*.ttf')
+		.pipe($.plumber({
+			errorHandler,
+		}))
+		.pipe($.changed('build/fonts', {
+			extension: '.woff',
+			hasChanged: $.changed.compareLastModifiedTime,
+		}))
+		.pipe($.ttf2woff())
+		.pipe(gulp.dest('build/fonts'));
+});
+
+gulp.task('ttf:woff2', () => {
+	return gulp.src('src/resources/fonts/**/*.ttf')
+		.pipe($.plumber({
+			errorHandler,
+		}))
+		.pipe($.changed('build/fonts', {
+			extension: '.woff2',
+			hasChanged: $.changed.compareLastModifiedTime,
+		}))
+		.pipe($.ttf2woff2())
+		.pipe(gulp.dest('build/fonts'));
+});
+
 gulp.task('scss', () => {
 	const postcssPlugins = [
 		$.autoprefixer({
@@ -282,7 +322,6 @@ gulp.task('brotli:js', () => {
 		.pipe($.webpackStream(webpackConfig))
 		.pipe($.stripComments())
 		.pipe($.uglifyEs.default())
-		.pipe($.gzip())
 		.pipe($.brotli({
 			params: {
 				[zlib.constants.BROTLI_PARAM_QUALITY]: zlib.constants.BROTLI_MAX_QUALITY,
@@ -307,7 +346,6 @@ gulp.task('brotli:css', () => {
 		}))
 		.pipe(sass().on('error', sass.logError))
 		.pipe($.postcss(postcssPlugins))
-		.pipe($.gzip())
 		.pipe($.brotli({
 			params: {
 				[zlib.constants.BROTLI_PARAM_QUALITY]: zlib.constants.BROTLI_MAX_QUALITY,
@@ -347,7 +385,6 @@ gulp.task('gzip:css', () => {
 		.pipe($.gzip())
 		.pipe(gulp.dest('build/css'));
 });
-
 
 gulp.task('lint:pug', () => {
 	return gulp.src([
@@ -406,27 +443,6 @@ gulp.task('validate:html', () => {
 			errorHandler,
 		}))
 		.pipe($.w3cHtmlValidator());
-});
-
-gulp.task('optimize:images', () => {
-	return gulp.src('src/images/**/*.*')
-		.pipe($.plumber({
-			errorHandler,
-		}))
-		.pipe($.if(argv.debug, $.debug()))
-		.pipe($.imagemin([
-			$.imagemin.gifsicle({
-				interlaced: true,
-			}),
-			$.imagemin.optipng({
-				optimizationLevel: 3,
-			}),
-			$.imageminMozjpeg({
-				progressive: true,
-				quality: 80,
-			}),
-		]))
-		.pipe(gulp.dest('src/images'));
 });
 
 gulp.task('optimize:svg', () => {
@@ -565,15 +581,13 @@ gulp.task('build', gulp.series(
 	'pug',
 	'share',
 	'robots',
-	'brotli:css',
-	'brotli:js',
-	'gzip:css',
-	'gzip:js',
 	gulp.parallel(
 		'images',
 		'webp',
 		'sprites:png',
 		'sprites:svg',
+		'ttf:woff',
+		'ttf:woff2',
 		'scss',
 		'js',
 	),
@@ -585,4 +599,11 @@ gulp.task('default', gulp.series(
 		'watch',
 		'serve',
 	),
+));
+
+gulp.task('compression', gulp.series(
+	'brotli:css',
+	'brotli:js',
+	'gzip:css',
+	'gzip:js',
 ));
