@@ -2,10 +2,10 @@ section.section.about-user#about-user
 	.container.row
 		.about-user__info.info-about-user
 			picture.info-about-user__logo.a-top(
-				itemprop="image"
-				data-scroll
-				data-scroll-speed="-0.05"
 				data-scroll-class="is-view"
+				data-scroll-repeat
+				data-scroll
+				itemprop="image"
 			)
 				source(
 					srcset="./images/base/logo.webp, ./images/base/logo@2x.webp 2x"
@@ -19,28 +19,28 @@ section.section.about-user#about-user
 				)
 				img(alt="Логотип" src="./images/base/logo.png")
 			h1.info-about-user__title.a-top(
-					itemprop="name"
-					data-scroll
-					data-scroll-speed="0.2"
-					data-scroll-class="is-view"
-				)
+				itemprop="name"
+				data-scroll-repeat
+				data-scroll-class="is-view"
+				data-scroll
+			)
 				| Иван
 				br
 				| Frontend разработчик
 
 			p.info-about-user__text.a-top(
-					itemprop="description"
-					data-scroll
-					data-scroll-speed="0.35"
-					data-scroll-class="is-view"
-				)
-				| Как разработчик, я&nbsp;высоко ценю способность воплотить видение дизайнера в&nbsp;жизнь,
-				| что считаю очень полезным для бизнеса. Я&nbsp;получаю огромное удовлетворение, наблюдая
-				| за&nbsp;работой от&nbsp;идеи до&nbsp;дизайна, особенно когда она появляется в&nbsp;руках пользователя.
-				| Я&nbsp;считаю, что ориентированные на&nbsp;пользователя решения являются наиболее ценными
+				itemprop="description"
+				data-scroll-repeat
+				data-scroll-class="is-view"
+				data-scroll
+			)
+				| Как разработчик, я высоко ценю способность воплотить видение дизайнера в жизнь,
+				| что считаю очень полезным для бизнеса. Я получаю огромное удовлетворение, наблюдая
+				| за работой от идеи до дизайна, особенно когда она появляется в руках пользователя.
+				| Я считаю, что ориентированные на пользователя решения являются наиболее ценными
 				| цифровыми ресурсами будущего.
 
-		address.about-user__contact.a-top(data-scroll data-scroll-class="is-view" data-scroll-speed="0.05")
+		address.about-user__contact.a-top(data-scroll-class="is-view" data-scroll-repeat data-scroll)
 			ul.contact-about-user(itemprop="contactPoint")
 				li.contact-about-user__item(itemprop="email")
 					a(href="mailto:xxvxx@list.ru")

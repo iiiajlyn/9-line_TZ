@@ -1,30 +1,30 @@
 .experience {
 	&::before {
 		content: "";
-		height: 100%;
-		z-index: -1;
 		position: absolute;
-		background-repeat: no-repeat;
+		z-index: -1;
+		height: 100%;
 		background-position: bottom;
 		background-size: 100% auto;
+		background-repeat: no-repeat;
 
 		@include desktop {
-			background-image: url("/images/pages/home/experienceBg.svg");
 			bottom: -365px;
 			width: 100%;
+			background-image: url("/images/pages/home/experienceBg.svg");
 		}
 
 		@include devices {
-			width: calc(100% + 40px);
-			transform: translateX(-20px);
-			background-image: url("/images/pages/home/experienceBg@mob.svg");
 			bottom: -115px;
+			width: calc(100% + 40px);
+			background-image: url("/images/pages/home/experienceBg@mob.svg");
+			transform: translateX(-20px);
 		}
 	}
 
 	&__work {
 		@include desktop {
-			grid-column: 1/3;
+			@include grid-column(1, 3);
 		}
 
 		@include devices {
@@ -34,8 +34,9 @@
 
 	&__education {
 		display: flex;
-		align-items: center;
 		flex-direction: column;
+		align-items: center;
+		@include grid-column(4, 5);
 
 		@include devices {
 			grid-column: 1/5;
@@ -47,15 +48,16 @@
 		justify-content: center;
 
 		@include desktop {
-			width: calc(100% + 50px);
+			@include grid-column(3, 4);
 			margin-left: -15px;
+			width: calc(100% + 50px);
 		}
 
 		@include devices {
 			grid-column: 1/5;
-			width: 100%;
 			padding-top: 15px;
 			padding-bottom: 20px;
+			width: 100%;
 		}
 	}
 }
@@ -63,10 +65,10 @@
 .picture-experience {
 	&__img {
 		@include desktop {
-			width: 100%;
-			height: 100%;
 			display: flex;
 			align-items: flex-end;
+			width: 100%;
+			height: 100%;
 		}
 
 		@include devices {
@@ -77,12 +79,12 @@
 
 	&__box {
 		@include desktop {
-			height: calc(100vh - 250px);
-			display: flex;
-			margin-top: -50px;
-			align-items: end;
 			position: sticky;
 			top: calc(-100vh + 875px);
+			display: flex;
+			align-items: flex-end;
+			margin-top: -50px;
+			height: calc(100vh - 250px);
 		}
 	}
 }
@@ -100,16 +102,16 @@
 
 	&__item {
 		display: flex;
-		gap: 8px;
 		flex-direction: column;
+		gap: 8px;
 	}
 
 	&__row {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 60px;
 		line-height: normal;
+		gap: 60px;
 	}
 
 	&__post {
@@ -125,9 +127,9 @@
 
 	&__place {
 		display: flex;
-		gap: 0px 8px;
+		flex-flow: wrap;
 		flex-direction: row;
-		flex-wrap: wrap;
+		gap: 0 8px;
 	}
 
 	&__date {
@@ -137,8 +139,8 @@
 	&__done {
 		display: flex;
 		flex-direction: column;
-		gap: 3px;
 		line-height: $line-height-primary;
+		gap: 3px;
 	}
 
 	&__company {
@@ -152,10 +154,6 @@
 
 		&.is-21vek {
 			@include sprite("work-21vek");
-		}
-
-		&.is-oz {
-			@include sprite("work-oz");
 		}
 
 		&.is-oz {
@@ -181,24 +179,23 @@
 
 .education-experience {
 	&__title {
-		text-align: center;
 		width: 100%;
+		text-align: center;
 
 		@include desktop {
-			text-align: center;
 			margin-bottom: 32px;
+			text-align: center;
 		}
 
 		@include devices {
-			text-align: left;
 			margin-bottom: 16px;
+			text-align: left;
 		}
 	}
 
 	&__row {
 		display: grid;
 		gap: 30px 20px;
-		align-items: start;
 
 		@include desktop {
 			gap: 30px 20px;
@@ -206,25 +203,26 @@
 
 		@include devices {
 			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: auto;
 			gap: 20px;
 		}
 	}
 
 	&__item {
 		display: flex;
-		align-items: center;
 		flex-direction: column;
-		gap: 5px;
+		align-items: center;
 		width: 100%;
 		max-width: 190px;
 		text-align: center;
-
-		@include desktop {
-			padding: 0px 20px;
-		}
+		gap: 5px;
 
 		.fa-rhomb {
-			margin: 7px
+			margin: 7px;
+		}
+
+		@include desktop {
+			padding: 0 20px;
 		}
 	}
 

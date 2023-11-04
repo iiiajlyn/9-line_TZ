@@ -18,15 +18,16 @@
 	&__row {
 		display: grid;
 		grid-column: 1/5;
+		gap: 20px;
 
 		@include desktop {
 			grid-template-columns: repeat(4, 1fr);
-			gap: 10px $gap-primary;
+			grid-template-rows: auto;
 		}
 
 		@include devices {
 			grid-template-columns: repeat(1, 1fr);
-			gap: $gap-primary;
+			grid-template-rows: auto;
 		}
 	}
 

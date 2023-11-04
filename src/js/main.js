@@ -1,20 +1,20 @@
 import './vendor';
 import './helpers';
 import './components/social';
-// // import {ieFix} from './vendor/ie-fix';
+import {ieFix} from './vendor/ie-fix';
 import {vhFix} from './vendor/vh-fix';
 import locomotive from './vendor/locomotiveScroll';
 import header from './components/header';
 import lazyLoading from './modules/lazyLoading';
 import ancoreTop from './components/ancoreTop';
 import preloader from './components/preloader';
-import ie from './components/ieModal';
+// import ie from './components/ieModal';
 
-// // ieFix();
 locomotive.init();
 header.init();
 lazyLoading.init();
 ancoreTop.init();
 preloader.init();
+ieFix();
 vhFix();
-ie.init();
+// ie.init();

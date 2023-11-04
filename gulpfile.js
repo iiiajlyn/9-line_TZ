@@ -46,6 +46,8 @@ if (argv.ci) {
 
 let $ = gulpLoadPlugins({
 	overridePattern: false,
+	rename: {
+	},
 	pattern: [
 		'autoprefixer',
 		'browser-sync',
@@ -163,8 +165,6 @@ gulp.task('sprites:png', () => {
 			imgName: 'sprites.png',
 			retinaImgName: 'sprites@2x.png',
 			retinaSrcFilter: 'src/images/sprites/png/*@2x.png',
-			imgNameWebp: 'sprites.webp',
-			retinaImgNameWebp: 'sprites@2x.webp',
 			padding: 2,
 		}));
 
@@ -175,6 +175,7 @@ gulp.task('sprites:png', () => {
 			}))
 			.pipe($.vinylBuffer())
 			.pipe($.imagemin())
+			.pipe(gulp.dest('build/images'))
 			.pipe($.webp())
 			.pipe(gulp.dest('build/images')),
 		spritesData.css
@@ -309,7 +310,7 @@ gulp.task('js', () => {
 		.pipe($.webpackStream(webpackConfig))
 		.pipe($.stripComments())
 		.pipe($.sourcemaps.init())
-		.pipe($.if(argv.minifyJs, $.uglifyEs.default().on('error', console.error)))
+		.pipe($.if(argv.minifyJs, $.uglifyEs.default()))
 		.pipe($.sourcemaps.write('.'))
 		.pipe(gulp.dest(webpackConfig.output.path));
 });
@@ -590,6 +591,7 @@ gulp.task('build', gulp.series(
 		'ttf:woff2',
 		'scss',
 		'js',
+		'lint',
 	),
 ));
 
@@ -607,3 +609,5 @@ gulp.task('compression', gulp.series(
 	'gzip:css',
 	'gzip:js',
 ));
+
+// .on('error', console.error) размещение подробной ошибки в консоль

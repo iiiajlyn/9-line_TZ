@@ -1,18 +1,18 @@
 header.header
 	.container
-		button.header__burger.btn.js-burger(type="button" aria-label="меню")
-			span
-			span
-			span
+		button.header__burger.burger-header.btn.js-burger(type="button" aria-label="меню")
+			span.burger-header__line
+			span.burger-header__line
+			span.burger-header__line
 		nav.header__menu
 			ul.header__list(itemscope itemtype="http://www.schema.org/SiteNavigationElement")
 				each object, key in data.header.menu
 					li.header__link
-						a(
+						a.js-to-scroll(
 							href=object.url
 							data-link=key
 							itemprop="url"
-						).js-to-scroll
+						)
 							!= object.name
 			.header__img
 				+lazyPicture({

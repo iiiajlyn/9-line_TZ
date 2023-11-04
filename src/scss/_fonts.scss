@@ -24,10 +24,9 @@ $urlSFProDisplay: "/fonts/sf-pro-display/SFProDisplay-";
 @include font-face($urlSFProDisplay + "Heavy", "SF Pro Display", 900, normal);
 @include font-face($urlSFProDisplay + "Regular", "SF Pro Display", normal, normal);
 @include font-face($urlSFProDisplay + "Semibold", "SF Pro Display", 600, normal);
-@include font-face($urlSFProDisplay + "Medium",	"SF Pro Display", 500, normal);
+@include font-face($urlSFProDisplay + "Medium", "SF Pro Display", 500, normal);
 @include font-face($urlSFProDisplay + "Light", "SF Pro Display", 200, normal);
 @include font-face($urlSFProDisplay + "Thin", "SF Pro Display", 100, normal);
-
 @include font-face($urlSFProDisplay + "BoldItalic", "SF Pro Display", bold, italic);
 @include font-face($urlSFProDisplay + "BlackItalic", "SF Pro Display", 900, italic);
 @include font-face($urlSFProDisplay + "RegularItalic", "SF Pro Display", normal, italic);
