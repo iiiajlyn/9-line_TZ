@@ -10,8 +10,8 @@
 	$imageWebp: url("../images/#{sprite-image($name, $size)}");
 
 	background-image:
-		url("../images/#{sprite-image($name, $size)}"),
-		str-slice($imageWebp, 1, -6) + 'webp")';
+		str-slice($imageWebp, 1, -6) + 'webp")',
+		url("../images/#{sprite-image($name, $size)}");
 }
 
 @mixin sprite-background-position($name, $size: normal) {
@@ -29,7 +29,6 @@
 	$size: (sprite-total-width($name, $size) * 1px) (sprite-total-height($name, $size) * 1px);
 
 	background: $image $position / $size no-repeat;
-	background-image: str-slice($imageWebp, 1, -6) + 'webp")';
 }
 
 @mixin sprite($name) {
@@ -40,7 +39,7 @@
 	@include sprite-width($name, normal);
 	@include sprite-height($name, normal);
 	@include sprite-background($name, normal);
-	@include sprite-background($name, normal);
+	@include sprite-background-image($name, normal);
 
 	@include retina {
 		@include sprite-background-image($name, retina);

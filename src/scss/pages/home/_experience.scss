@@ -28,18 +28,19 @@
 		}
 
 		@include devices {
-			grid-column: 1/5;
+			@include grid-column(1, 5);
 		}
 	}
 
 	&__education {
+		@include grid-column(4, 5);
+
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		@include grid-column(4, 5);
 
 		@include devices {
-			grid-column: 1/5;
+			@include grid-column(1, 5);
 		}
 	}
 
@@ -49,12 +50,14 @@
 
 		@include desktop {
 			@include grid-column(3, 4);
+
 			margin-left: -15px;
 			width: calc(100% + 50px);
 		}
 
 		@include devices {
-			grid-column: 1/5;
+			@include grid-column(1, 5);
+
 			padding-top: 15px;
 			padding-bottom: 20px;
 			width: 100%;
@@ -101,17 +104,25 @@
 	}
 
 	&__item {
+		@include gap-row(8px);
+
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		width: 100%;
+
+		@include browser-ie {
+			width: 100%;
+		}
 	}
 
 	&__row {
+		@include gap(60px);
+
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
+		width: 100%;
 		line-height: normal;
-		gap: 60px;
 	}
 
 	&__post {
@@ -126,10 +137,11 @@
 	}
 
 	&__place {
+		@include gap-column(8px);
+
 		display: flex;
 		flex-flow: wrap;
 		flex-direction: row;
-		gap: 0 8px;
 	}
 
 	&__date {
@@ -137,16 +149,18 @@
 	}
 
 	&__done {
+		@include gap(3px);
+
 		display: flex;
 		flex-direction: column;
 		line-height: $line-height-primary;
-		gap: 3px;
 	}
 
 	&__company {
+		@include gap-column(8px);
+
 		display: flex;
 		align-items: center;
-		gap: 8px;
 	}
 
 	&__logo {
@@ -170,10 +184,11 @@
 	}
 
 	&__link {
+		@include gap(3px);
+
 		display: flex;
 		flex-direction: column;
 		line-height: normal;
-		gap: 3px;
 	}
 }
 
@@ -195,27 +210,31 @@
 
 	&__row {
 		display: grid;
-		gap: 30px 20px;
+
+		@include browser-ie {
+			display: block;
+		}
 
 		@include desktop {
-			gap: 30px 20px;
+			@include gap(30px, 20px);
 		}
 
 		@include devices {
+			@include gap(20px);
+
 			grid-template-columns: repeat(2, 1fr);
 			grid-template-rows: auto;
-			gap: 20px;
 		}
 	}
 
 	&__item {
+		@include gap(5px);
+
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		width: 100%;
 		max-width: 190px;
 		text-align: center;
-		gap: 5px;
 
 		.fa-rhomb {
 			margin: 7px;
@@ -223,6 +242,14 @@
 
 		@include desktop {
 			padding: 0 20px;
+		}
+
+		@include browser-ie {
+			width: 100%;
+
+			> *:not(.fa-rhomb):not(.education-experience__logo) {
+				width: 100%;
+			}
 		}
 	}
 

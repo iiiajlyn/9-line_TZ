@@ -1,6 +1,7 @@
 @mixin fa-color($color) {
 	border-color: mix($color, #fff, 50%);
 	background: conic-gradient(from 225deg at 94.19% 5.24%, mix($color, #fff, 75%) 0deg, $color 360deg);
+	background-color: $color;
 }
 
 .fa-box {
@@ -32,27 +33,27 @@
 	}
 
 	&[class*="lilac"] {
-		@include fa-color(#938DF8);
+		@include fa-color(#938df8);
 	}
 
 	&[class*="blue"] {
-		@include fa-color(#4BBEF2);
+		@include fa-color(#4bbef2);
 	}
 
 	&[class*="yellow"] {
-		@include fa-color(#FFCD3D);
+		@include fa-color(#ffcd3d);
 	}
 
 	&[class*="pink"] {
-		@include fa-color(#EE5087);
+		@include fa-color(#ee5087);
 	}
 
 	&[class*="orange"] {
-		@include fa-color(#FFA25A);
+		@include fa-color(#ffa25a);
 	}
 
 	&[class*="aqua"] {
-		@include fa-color(#3DC39B);
+		@include fa-color(#3dc39b);
 	}
 
 	& + & {

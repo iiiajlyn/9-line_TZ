@@ -3,16 +3,18 @@
 	flex-direction: column;
 
 	@include desktop {
+		@include gap(200px);
+
 		padding: 100px 150px;
 		padding-bottom: 50px;
-		gap: 200px 0;
 	}
 
 	@include devices {
+		@include gap(20px);
+
 		overflow-x: hidden;
 		padding: 20px;
 		width: 100vw;
-		gap: 20px 0;
 	}
 }
 
@@ -45,8 +47,9 @@ h2 {
 }
 
 .share-social {
+	@include gap-column(20px);
+
 	display: flex;
-	gap: 20px;
 
 	&__img {
 		width: 25px;
@@ -68,27 +71,4 @@ h2 {
 .is-browser-ie {
 	overflow: hidden;
 	height: 100vh;
-}
-
-.info-browser-ie {
-	position: fixed;
-	left: 0;
-	top: 0;
-	z-index: 10000;
-	padding: 100px;
-	width: 100vw;
-	height: 100vh;
-	font-size: 18px;
-	line-height: normal;
-	text-align: center;
-	background: $color-white;
-
-	&__title {
-		padding: 20px;
-		font-size: 20px;
-	}
-
-	&__text {
-		padding: 20px;
-	}
 }

@@ -24,3 +24,16 @@
 	scrollbar-color: $color-black $color-white;
 	scrollbar-width: thin;
 }
+
+body {
+	@include browser-ie {
+		/* stylelint-disable-next-line property-no-unknown */
+		scrollbar-3dlight-color: $color-white;
+		scrollbar-arrow-color: $color-gray;
+		scrollbar-darkshadow-color: $color-white;
+		scrollbar-face-color: $color-black;
+		scrollbar-highlight-color: $color-black;
+		scrollbar-shadow-color: $color-white;
+		scrollbar-track-color: $color-white;
+	}
+}
