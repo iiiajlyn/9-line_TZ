@@ -4,13 +4,13 @@ import './components/social';
 import polyfill from 'cross-browser-polyfill';
 import { ieFix } from './vendor/ie-fix';
 import { vhFix } from './vendor/vh-fix';
-// import locomotive from './vendor/locomotiveScroll';
+import locomotive from './vendor/locomotiveScroll';
 import header from './components/header';
 import lazyLoading from './modules/lazyLoading';
 import ancoreTop from './components/ancoreTop';
 import preloader from './components/preloader';
 
-// locomotive.init();
+locomotive.init();
 polyfill();
 header.init();
 lazyLoading.init();

@@ -1,15 +1,14 @@
 // stylelint-disable at-rule-empty-line-before
 
+@import "mixins";
 @import "variables";
 @import "functions";
-@import "mixins";
-@import "sprites";
 @import "fonts";
+@import "sprites";
 @import "vendor";
 @import "base";
 @import "helpers";
 
-@import "components/scroll";
 @import "components/icons";
 @import "components/ancoreTop";
 @import "components/preloader";

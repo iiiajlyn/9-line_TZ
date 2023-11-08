@@ -1,4 +1,4 @@
-section.section.experience#experience
+section.section.experience#experience(data-scroll-section)
 	.container.row
 		.experience__work.work-experience
 			h2.work-experience__title.a-top(data-scroll-repeat data-scroll-class="is-view" data-scroll)
@@ -129,7 +129,7 @@ section.section.experience#experience
 							| Supported retail accounting system LS&nbsp;Trade, troubleshoot technical problems.
 
 		.experience__picture.picture-experience
-			.picture-experience__box
+			.picture-experience__box(data-scroll-sticky data-scroll-target="#experience" data-scroll)
 				+lazyPicture({
 					src: `${baseDir}images/pages/home/manMagic`,
 					alt: 'Magic man',
@@ -137,7 +137,8 @@ section.section.experience#experience
 					device: true,
 					retina: true,
 					webp: true
-				}).picture-experience__img.a-top(data-scroll-repeat data-scroll-class="is-view" data-scroll)
+				}).picture-experience__img
+				//- }).picture-experience__img.a-top(data-scroll-repeat data-scroll-class="is-view" data-scroll)
 
 		.experience__education.education-experience
 			h2.education-experience__title.a-top(data-scroll-repeat data-scroll-class="is-view" data-scroll)

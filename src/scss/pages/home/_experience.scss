@@ -66,6 +66,8 @@
 }
 
 .picture-experience {
+	height: 100%;
+
 	&__img {
 		@include desktop {
 			display: flex;
@@ -82,7 +84,7 @@
 
 	&__box {
 		@include desktop {
-			position: sticky;
+			// position: sticky;
 			top: calc(-100vh + 875px);
 			display: flex;
 			align-items: flex-end;

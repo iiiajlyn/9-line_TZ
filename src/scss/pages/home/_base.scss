@@ -3,7 +3,7 @@
 	flex-direction: column;
 
 	@include desktop {
-		@include gap(200px);
+		@include gap-row(200px);
 
 		padding: 100px 150px;
 		padding-bottom: 50px;

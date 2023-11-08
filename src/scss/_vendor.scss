@@ -1,2 +1,18 @@
 @import "../../node_modules/normalize.css/normalize";
-@import "../../node_modules/locomotive-scroll/bundled/locomotive-scroll";
+@import "../../node_modules/locomotive-scroll/dist/locomotive-scroll";
+
+html.has-scroll-smooth {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.has-scroll-smooth body {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}

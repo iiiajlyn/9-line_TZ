@@ -288,6 +288,12 @@ html(class=html.classList)&attributes(html.attrs)
 					script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
 					document.getElementsByTagName('head')[0].appendChild(script);
 				}
-			script(src!=`${baseDir}js/vendor.js?v=${Date.now()}`)
-			script(src!=`${baseDir}js/main.js?v=${Date.now()}`)
+				if (window.document.documentMode) {
+					var script = document.createElement("script");
+					script.src = './js/isIE.js';
+					document.getElementsByTagName('head')[0].appendChild(script);
+				}
+			script(nomodule src="https://polyfill.io/v3/polyfill.min.js?features=Object.assign%2CElement.prototype.append%2CNodeList.prototype.forEach%2CCustomEvent%2Csmoothscroll" crossorigin="anonymous")
+			script(async src!=`${baseDir}js/vendor.js?v=${Date.now()}`)
+			script(async src!=`${baseDir}js/main.js?v=${Date.now()}`)
 		block body-end

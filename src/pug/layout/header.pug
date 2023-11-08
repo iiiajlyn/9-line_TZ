@@ -1,4 +1,4 @@
-header.header
+header.header(data-scroll-sticky data-scroll-target="#main" data-scroll)
 	.container
 		button.header__burger.burger-header.btn.js-burger(type="button" aria-label="меню")
 			span.burger-header__line
@@ -8,8 +8,8 @@ header.header
 			ul.header__list(itemscope itemtype="http://www.schema.org/SiteNavigationElement")
 				each object, key in data.header.menu
 					li.header__link
-						a.js-to-scroll(
-							href=object.url
+						span.js-to-scroll(
+							data-scroll-to=object.scrollTo
 							data-link=key
 							itemprop="url"
 						)

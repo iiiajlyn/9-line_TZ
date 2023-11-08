@@ -5,7 +5,6 @@ const path = require('path');
 const del = require('del');
 const webpackConfig = require('./webpack.config');
 const sass = require('gulp-sass')(require('sass'));
-const zlib = require('zlib');
 
 let emittyPug;
 let errorHandler;
@@ -303,88 +302,19 @@ gulp.task('scss', () => {
 });
 
 gulp.task('js', () => {
-	return gulp.src(webpackConfig.entry)
+	return gulp.src('./src/js/*.js')
 		.pipe($.plumber({
 			errorHandler,
 		}))
 		.pipe($.webpackStream(webpackConfig))
-		.pipe($.stripComments())
 		.pipe($.sourcemaps.init())
 		.pipe($.if(argv.minifyJs, $.uglifyEs.default()))
 		.pipe($.sourcemaps.write('.'))
-		.pipe(gulp.dest(webpackConfig.output.path));
-});
-
-gulp.task('brotli:js', () => {
-	return gulp.src(webpackConfig.entry)
-		.pipe($.plumber({
-			errorHandler,
-		}))
-		.pipe($.webpackStream(webpackConfig))
-		.pipe($.stripComments())
-		.pipe($.uglifyEs.default())
-		.pipe($.brotli({
-			params: {
-				[zlib.constants.BROTLI_PARAM_QUALITY]: zlib.constants.BROTLI_MAX_QUALITY,
-			},
+		.pipe($.stripComments({
+			space: false,
+			trim: false,
 		}))
 		.pipe(gulp.dest(webpackConfig.output.path));
-});
-
-gulp.task('brotli:css', () => {
-	const postcssPlugins = [
-		$.autoprefixer({
-			grid: 'autoplace',
-		}),
-	];
-
-	return gulp.src([
-		'src/scss/*.scss',
-		'!src/scss/_*.scss',
-	])
-		.pipe($.plumber({
-			errorHandler,
-		}))
-		.pipe(sass().on('error', sass.logError))
-		.pipe($.postcss(postcssPlugins))
-		.pipe($.brotli({
-			params: {
-				[zlib.constants.BROTLI_PARAM_QUALITY]: zlib.constants.BROTLI_MAX_QUALITY,
-			},
-		}))
-		.pipe(gulp.dest('build/css'));
-});
-
-gulp.task('gzip:js', () => {
-	return gulp.src(webpackConfig.entry)
-		.pipe($.plumber({
-			errorHandler,
-		}))
-		.pipe($.webpackStream(webpackConfig))
-		.pipe($.stripComments())
-		.pipe($.uglifyEs.default())
-		.pipe($.gzip())
-		.pipe(gulp.dest(webpackConfig.output.path));
-});
-
-gulp.task('gzip:css', () => {
-	const postcssPlugins = [
-		$.autoprefixer({
-			grid: 'autoplace',
-		}),
-	];
-
-	return gulp.src([
-		'src/scss/*.scss',
-		'!src/scss/_*.scss',
-	])
-		.pipe($.plumber({
-			errorHandler,
-		}))
-		.pipe(sass().on('error', sass.logError))
-		.pipe($.postcss(postcssPlugins))
-		.pipe($.gzip())
-		.pipe(gulp.dest('build/css'));
 });
 
 gulp.task('lint:pug', () => {
@@ -601,13 +531,6 @@ gulp.task('default', gulp.series(
 		'watch',
 		'serve',
 	),
-));
-
-gulp.task('compression', gulp.series(
-	'brotli:css',
-	'brotli:js',
-	'gzip:css',
-	'gzip:js',
 ));
 
 // .on('error', console.error) размещение подробной ошибки в консоль
