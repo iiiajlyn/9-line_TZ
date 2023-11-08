@@ -84,6 +84,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		transition: $duration-normal;
+		cursor: pointer;
 
 		&::before {
 			content: "";
@@ -97,6 +99,10 @@
 			background-repeat: no-repeat;
 			opacity: 0;
 			transition: $duration-normal;
+		}
+
+		&:hover {
+			opacity: 0.7;
 		}
 
 		@include desktop {

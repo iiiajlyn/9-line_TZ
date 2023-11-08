@@ -1,7 +1,10 @@
 const path = require('path');
 
 module.exports = {
-	entry: './src/js/main.js',
+	entry: {
+		main: './src/js/main.js',
+		isIE: './src/js/isIE.js',
+	},
 	output: {
 		path: path.resolve(__dirname, 'build/js'),
 		filename: '[name].js',

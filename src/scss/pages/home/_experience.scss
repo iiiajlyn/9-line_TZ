@@ -41,6 +41,10 @@
 
 		@include devices {
 			@include grid-column(1, 5);
+
+			@include browser-ie {
+				-ms-grid-row: 3;
+			}
 		}
 	}
 
@@ -61,6 +65,10 @@
 			padding-top: 15px;
 			padding-bottom: 20px;
 			width: 100%;
+
+			@include browser-ie {
+				-ms-grid-row: 2;
+			}
 		}
 	}
 }
@@ -84,7 +92,6 @@
 
 	&__box {
 		@include desktop {
-			// position: sticky;
 			top: calc(-100vh + 875px);
 			display: flex;
 			align-items: flex-end;
@@ -213,12 +220,13 @@
 	&__row {
 		display: grid;
 
-		@include browser-ie {
-			display: block;
-		}
-
 		@include desktop {
 			@include gap(30px, 20px);
+
+			@include browser-ie {
+				display: flex;
+				flex-direction: column;
+			}
 		}
 
 		@include devices {
@@ -226,6 +234,12 @@
 
 			grid-template-columns: repeat(2, 1fr);
 			grid-template-rows: auto;
+
+			@include browser-ie {
+				display: block;
+				column-count: 2;
+				width: 100%;
+			}
 		}
 	}
 
@@ -244,6 +258,13 @@
 
 		@include desktop {
 			padding: 0 20px;
+		}
+
+		@include devices {
+			@include browser-ie {
+				break-inside: avoid;
+				max-width: 100%;
+			}
 		}
 
 		@include browser-ie {

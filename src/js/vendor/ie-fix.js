@@ -18,7 +18,7 @@
 * https://gist.github.com/paulirish/5438650
 */
 
-const ieFix = () => {
+function init() {
 	(function () {
 		if ("performance" in window == false) {
 			window.performance = {};
@@ -123,8 +123,8 @@ const ieFix = () => {
 
 	if (!Element.prototype.matches) {
 		Element.prototype.matches =
-		Element.prototype.msMatchesSelector ||
-		Element.prototype.webkitMatchesSelector;
+			Element.prototype.msMatchesSelector ||
+			Element.prototype.webkitMatchesSelector;
 	}
 
 	// closest
@@ -334,4 +334,4 @@ const ieFix = () => {
 	ieFooterNailing();
 };
 
-export { ieFix };
+export default { init };

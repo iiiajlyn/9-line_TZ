@@ -1,20 +1,14 @@
 import './vendor';
-import './helpers';
 import './components/social';
-import polyfill from 'cross-browser-polyfill';
-import { ieFix } from './vendor/ie-fix';
-import { vhFix } from './vendor/vh-fix';
-import locomotive from './vendor/locomotiveScroll';
+import 'es7-object-polyfill';
+import vhFix from './vendor/vh-fix';
 import header from './components/header';
-import lazyLoading from './modules/lazyLoading';
-import ancoreTop from './components/ancoreTop';
 import preloader from './components/preloader';
+import locomotive from './vendor/locomotiveScroll';
+import lazyLoading from './modules/lazyLoading';
 
-locomotive.init();
-polyfill();
+preloader.init();
 header.init();
 lazyLoading.init();
-ancoreTop.init();
-preloader.init();
-ieFix();
-vhFix();
+locomotive.init();
+vhFix.init();

@@ -47,6 +47,10 @@
 		@include devices {
 			@include grid-column(1, 5);
 		}
+
+		@include browser-ie {
+			-ms-grid-row: 2;
+		}
 	}
 }
 

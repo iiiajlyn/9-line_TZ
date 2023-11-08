@@ -2,6 +2,9 @@ import LocomotiveScroll from 'locomotive-scroll';
 import helpers from '../helpers';
 
 function init() {
+	let headerPage = $('.header');
+	let ancoreTop = $('.ancore-top');
+	let htmlPage = $('html');
 	const scroll = new LocomotiveScroll({
 		el: document.querySelector('[data-scroll-container]'),
 		smooth: true
@@ -17,8 +20,8 @@ function init() {
 	if (helpers.psi()) {
 		let style = document.createElement('style');
 		style.innerHTML = '*{transition: none !important;}'
-		$('html').addClass('Chrome-Lighthouse');
-		$('html').prepend(style);
+		$(htmlPage).addClass('Chrome-Lighthouse');
+		$(htmlPage).prepend(style);
 		$.each($('[data-scroll-speed]'), function (index, value) {
 			value.removeAttribute('data-scroll-speed');
 		});
@@ -34,7 +37,7 @@ function init() {
 		})
 	});
 
-	$('.ancore-top').on('click', () => {
+	$(ancoreTop).on('click', () => {
 		scroll.scrollTo('top')
 	});
 
@@ -46,21 +49,35 @@ function init() {
 		$('#ancore-top-value').html(`${scrollValue} %`);
 		$('#ancore-top-circle').css('stroke-dashoffset', strokeValue);
 
-		if (scrollValue < 98 && $('.ancore-top').hasClass('js-page-end')) {
-			$('.ancore-top').removeClass('js-page-end');
+		if (scrollValue < 98 && $(ancoreTop).hasClass('js-page-end')) {
+			$(ancoreTop).removeClass('js-page-end');
 		}
 
 		if (scrollValue > 98) {
-			$('.ancore-top').addClass('js-page-end');
+			$(ancoreTop).addClass('js-page-end');
 		}
 
-		// //header
-		// if (scroll.y >= 175) {
-		// 	$('.header').addClass('is-fixed');
-		// } else {
-		// 	$('.header').removeClass('is-fixed');
-		// }
+		//header
+		if (scroll.y >= 80 && window.innerWidth > 1024) {
+			$(headerPage).addClass('is-fixed');
+			$(headerPage).css('padding-top', '20px');
+		}
+
+		if (scroll.y <= 80 && window.innerWidth > 1024) {
+			$(headerPage).removeClass('is-fixed');
+			$(headerPage).css('padding-top', `${100 - scroll.y}px`);
+		}
 	});
+
+	function resize() {
+		if (window.innerWidth <= 1024) {
+			$(headerPage).css('padding-top', '0');
+		}
+
+		scroll.start()
+	}
+
+	window.addEventListener('resize', resize);
 }
 
 export default {

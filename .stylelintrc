@@ -640,7 +640,7 @@
 				"checkPrefixed": true
 			}
 		],
-		"property-no-vendor-prefix": true,
+		"property-no-vendor-prefix": null,
 		"property-whitelist": null,
 		"rule-empty-line-before": [
 			"always-multi-line",
