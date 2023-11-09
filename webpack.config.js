@@ -23,7 +23,7 @@ module.exports = {
 	},
 	optimization: {
 		splitChunks: {
-			chunks: 'all',
+			// chunks: 'all',
 			cacheGroups: {
 				vendor: {
 					chunks: 'initial',

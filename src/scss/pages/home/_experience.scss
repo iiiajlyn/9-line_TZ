@@ -11,13 +11,13 @@
 		@include desktop {
 			bottom: -365px;
 			width: 100%;
-			background-image: url("/images/pages/home/experienceBg.svg");
+			background-image: url("../images/pages/home/experienceBg.svg");
 		}
 
 		@include devices {
 			bottom: -115px;
 			width: calc(100% + 40px);
-			background-image: url("/images/pages/home/experienceBg@mob.svg");
+			background-image: url("../images/pages/home/experienceBg@mob.svg");
 			transform: translateX(-20px);
 		}
 	}
