@@ -41,16 +41,17 @@ function init() {
 	$(ancoreTop).on('click', () => {
 		scroll.scrollTo('top')
 	});
-	let scrollValue;
 
+	let scrollValue;
 	scroll.on('scroll', ({ limit, scroll }) => {
 		//ancore top
-		scrollValue = Math.round(scroll.y / limit.y * 100)
-		let strokeValue = 354 - 354 / 100 * scrollValue;
-
-		if (window.innerWidth <= 1024) {
+		if (!$(htmlPage).hasClass("has-scroll-smooth")) {
 			scrollValue = Math.round(getScrollPercentage())
+		} else {
+			scrollValue = Math.round(scroll.y / limit.y * 100)
 		}
+
+		let strokeValue = 354 - 354 / 100 * scrollValue;
 
 		$('#ancore-top-value').html(`${scrollValue} %`);
 		$('#ancore-top-circle').css('stroke-dashoffset', strokeValue);
@@ -80,7 +81,7 @@ function init() {
 			$(headerPage).css('padding-top', '0');
 		}
 
-		scroll.start()
+		// scroll.start()
 		scroll.update()
 	}
 
