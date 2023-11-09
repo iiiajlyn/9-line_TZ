@@ -8,7 +8,9 @@ function init() {
 	let htmlPage = $('html');
 	const scroll = new LocomotiveScroll({
 		el: document.querySelector('[data-scroll-container]'),
-		smooth: true
+		smooth: true,
+		smoothMobile: false,
+		resetNativeScroll: true
 	});
 
 	if (window.innerWidth < 1025) {
@@ -80,7 +82,7 @@ function init() {
 		if (window.innerWidth <= 1024) {
 			$(headerPage).css('padding-top', '0');
 		}
-
+		// scroll.stop()
 		// scroll.start()
 		scroll.update()
 	}
