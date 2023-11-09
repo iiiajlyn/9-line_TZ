@@ -1,6 +1,5 @@
 import './vendor';
 import './components/social';
-import 'es7-object-polyfill';
 import vhFix from './vendor/vh-fix';
 import header from './components/header';
 import preloader from './components/preloader';

@@ -1,5 +1,6 @@
 import LocomotiveScroll from 'locomotive-scroll';
 import helpers from '../helpers';
+import { getScrollPercentage } from '../components/getScrollPercentage'
 
 function init() {
 	let headerPage = $('.header');
@@ -40,11 +41,16 @@ function init() {
 	$(ancoreTop).on('click', () => {
 		scroll.scrollTo('top')
 	});
+	let scrollValue;
 
-	//ancore top
 	scroll.on('scroll', ({ limit, scroll }) => {
-		let scrollValue = Math.round(scroll.y / limit.y * 100)
+		//ancore top
+		scrollValue = Math.round(scroll.y / limit.y * 100)
 		let strokeValue = 354 - 354 / 100 * scrollValue;
+
+		if (window.innerWidth <= 1024) {
+			scrollValue = Math.round(getScrollPercentage())
+		}
 
 		$('#ancore-top-value').html(`${scrollValue} %`);
 		$('#ancore-top-circle').css('stroke-dashoffset', strokeValue);
@@ -75,9 +81,12 @@ function init() {
 		}
 
 		scroll.start()
+		scroll.update()
 	}
 
 	window.addEventListener('resize', resize);
+	window.addEventListener('load', resize);
+
 }
 
 export default {

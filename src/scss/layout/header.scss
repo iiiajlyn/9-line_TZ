@@ -163,6 +163,10 @@
 			background-color: rgba($color-white, 0.8);
 			transition: box-shadow $duration-normal;
 			backdrop-filter: blur(7px);
+
+			@include browser-ie {
+				background-color: $color-white;
+			}
 		}
 
 		@include devices {

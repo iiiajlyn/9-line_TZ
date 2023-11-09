@@ -129,15 +129,14 @@ section.section.experience#experience(data-scroll-section)
 							| Supported retail accounting system LS&nbsp;Trade, troubleshoot technical problems.
 
 		.experience__picture.picture-experience
-			.picture-experience__box(data-scroll-sticky data-scroll-target="#experience" data-scroll)
-				+lazyPicture({
-					src: `${baseDir}images/pages/home/manMagic`,
-					alt: 'Magic man',
-					type: 'png',
-					device: true,
-					retina: true,
-					webp: true
-				}).picture-experience__img
+			+lazyPicture({
+				src: `${baseDir}images/pages/home/manMagic`,
+				alt: 'Magic man',
+				type: 'png',
+				device: true,
+				retina: true,
+				webp: true
+			}).picture-experience__img(data-scroll-sticky data-scroll-target="#experience" data-scroll)
 				//- }).picture-experience__img.a-top(data-scroll-repeat data-scroll-class="is-view" data-scroll)
 
 		.experience__education.education-experience

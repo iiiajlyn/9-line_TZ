@@ -71,6 +71,7 @@
 		"uglify-js": "3.17.4",
 		"vinyl-buffer": "1.0.1",
 		"webpack": "5.47.0",
+		"webpack-bundle-analyzer": "4.9.1",
 		"webpack-stream": "6.1.2",
 		"yargs": "17.0.1"
 	},

@@ -1,4 +1,5 @@
 const path = require('path');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
 	entry: {
@@ -22,14 +23,19 @@ module.exports = {
 	},
 	optimization: {
 		splitChunks: {
+			chunks: 'all',
 			cacheGroups: {
 				vendor: {
 					chunks: 'initial',
 					test: /node_modules|bower_components/,
 					name: 'vendor',
 					enforce: true,
+					minChunks: 2,
 				},
 			},
 		},
 	},
+	plugins: [
+		// new BundleAnalyzerPlugin(),
+	],
 };
