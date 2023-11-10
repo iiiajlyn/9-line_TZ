@@ -25,9 +25,10 @@ html {
 }
 
 body {
+	@include font-size-normal;
+
 	font-weight: 400;
 	-webkit-font-smoothing: antialiased;
-	font-size: 14px;
 	line-height: $line-height-primary;
 	text-decoration-skip: objects;
 	text-rendering: optimizeLegibility;

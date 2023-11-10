@@ -55,12 +55,13 @@
 	}
 
 	&__list {
+		@include font-size(18px, 26px);
+
 		position: relative;
 		display: flex;
 		justify-content: flex-end;
 		font-weight: 700;
 		font-style: normal;
-		font-size: 18px;
 
 		@include desktop {
 			@include gap(30px);
@@ -127,8 +128,7 @@
 			padding: 0;
 			width: 100%;
 			font-weight: 700;
-			font-size: 26px;
-			line-height: normal;
+			line-height: $line-height-normal;
 
 			@include active {
 				&::before {

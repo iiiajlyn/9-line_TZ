@@ -19,31 +19,19 @@
 }
 
 h1 {
+	@include font-size-large;
+
 	font-weight: 700;
 	font-style: normal;
 	line-height: $line-height-primary;
-
-	@include desktop {
-		font-size: 36px;
-	}
-
-	@include devices {
-		font-size: 28px;
-	}
 }
 
 h2 {
+	@include font-size-medium;
+
 	font-weight: 700;
 	font-style: normal;
-	line-height: normal;
-
-	@include desktop {
-		font-size: 24px;
-	}
-
-	@include devices {
-		font-size: 20px;
-	}
+	line-height: $line-height-normal;
 }
 
 .share-social {

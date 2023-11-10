@@ -7,7 +7,6 @@ $color-gray: #828282;
 $color-link: #2f80ed;
 
 // FONTS
-// stylelint-disable-next-line
 $font-primary:
 	"SF Pro Display",
 	-apple-system,
@@ -21,6 +20,7 @@ $font-primary:
 	"Helvetica Neue",
 	sans-serif;
 $line-height-primary: 140%;
+$line-height-normal: normal;
 
 // EASING TRANSITIONS
 $duration-normal: 0.5s;
