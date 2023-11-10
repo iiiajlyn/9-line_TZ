@@ -8,12 +8,9 @@
 @import "vendor";
 @import "base";
 @import "helpers";
+@import "header";
+@import "footer";
 
-@import "components/icons";
-@import "components/ancoreTop";
-@import "components/preloader";
-
-@import "layout/header";
-@import "layout/footer";
-
-@import "pages/home";
+@import "../components/icons";
+@import "../components/ancoreTop";
+@import "../components/preloader";

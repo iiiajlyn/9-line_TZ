@@ -1,6 +1,6 @@
 import LocomotiveScroll from 'locomotive-scroll';
 import helpers from '../helpers';
-import { getScrollPercentage } from '../components/getScrollPercentage'
+import { getScrollPercentage } from '../modules/getScrollPercentage'
 
 function init() {
 	let headerPage = $('.header');
@@ -107,8 +107,11 @@ function init() {
 
 		scroll.start()
 		scroll.update()
-		let wheelEvent = new WheelEvent("mousewheel", { deltaY: -100 });
+		let wheelEvent = new WheelEvent("wheel", { deltaY: 100 });
+		// let wheelEvent1 = new WheelEvent("wheel", { deltaY: -100 });
 		$('body')[0].dispatchEvent(wheelEvent);
+		// $('html')[0].dispatchEvent(wheelEvent1);
+		// $('main')[0].dispatchEvent(wheelEvent);
 	}
 
 	window.addEventListener('resize', resize);

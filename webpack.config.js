@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
 	entry: {
-		main: './src/js/main.js',
+		index: './src/js/index.js',
 		isIE: './src/js/isIE.js',
 	},
 	output: {

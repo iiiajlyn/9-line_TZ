@@ -160,7 +160,7 @@ gulp.task('sprites:png', () => {
 		.pipe($.if(argv.debug, $.debug()))
 		.pipe($.spritesmith({
 			cssName: '_sprites.scss',
-			cssTemplate: 'src/scss/_sprites.hbs',
+			cssTemplate: 'src/scss/layout/_sprites.hbs',
 			imgName: 'sprites.png',
 			retinaImgName: 'sprites@2x.png',
 			retinaSrcFilter: 'src/images/sprites/png/*@2x.png',
@@ -178,7 +178,7 @@ gulp.task('sprites:png', () => {
 			.pipe($.webp())
 			.pipe(gulp.dest('build/images')),
 		spritesData.css
-			.pipe(gulp.dest('src/scss')),
+			.pipe(gulp.dest('src/scss/layout')),
 	);
 });
 
@@ -209,7 +209,7 @@ gulp.task('pug', () => {
 	}
 
 	if (!argv.cache) {
-		return gulp.src('src/*.pug')
+		return gulp.src('src/pug/pages/*.pug')
 			.pipe($.plumber({
 				errorHandler,
 			}))
@@ -222,7 +222,7 @@ gulp.task('pug', () => {
 
 	return new Promise((resolve, reject) => {
 		emittyPug.scan(global.emittyPugChangedFile).then(() => {
-			gulp.src('src/*.pug')
+			gulp.src('src/pug/pages/*.pug')
 				.pipe($.plumber({
 					errorHandler,
 				}))
@@ -287,8 +287,8 @@ gulp.task('scss', () => {
 	}
 
 	return gulp.src([
-		'src/scss/*.scss',
-		'!src/scss/_*.scss',
+		'src/scss/pages/*.scss',
+		'!src/scss/pages/_*.scss',
 	])
 		.pipe($.plumber({
 			errorHandler,

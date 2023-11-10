@@ -81,7 +81,7 @@ function init() {
 			}
 		});
 
-	$('.header__link').on('click', activeMenu);
+	$('.header__link .js-to-scroll').on('click', activeMenu);
 }
 
 function destroy() {
