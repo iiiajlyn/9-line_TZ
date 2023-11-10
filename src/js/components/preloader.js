@@ -19,13 +19,13 @@ function removeFadeOut(el, speed) {
 */
 
 function init() {
-	if (helpers.getCookie('lastActivity') && !helpers.psi) {
+	if (!helpers.getCookie('lastActivity') && !helpers.psi()) {
 		let flag = 0;
 		let preloader = document.createElement('div');
 		let preloaderImg = document.createElement('div');
 		$(preloader).addClass('preloader');
 		$(preloaderImg).addClass('man-rocket');
-
+		console.log(helpers.getCookie('lastActivity'));
 		/**
 		* Опции
 		*/

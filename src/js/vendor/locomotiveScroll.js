@@ -6,11 +6,14 @@ function init() {
 	let headerPage = $('.header');
 	let ancoreTop = $('.ancore-top');
 	let htmlPage = $('html');
+	let ancoreTopValue = $('#ancore-top-value');
+	let ancoreTopCircle = $('#ancore-top-circle');
 	const scroll = new LocomotiveScroll({
 		el: document.querySelector('[data-scroll-container]'),
 		smooth: true,
-		smoothMobile: false,
-		resetNativeScroll: true
+		smoothMobile: true,
+		resetNativeScroll: true,
+		multiplier: 0.8,
 	});
 
 	if (window.innerWidth < 1025) {
@@ -36,7 +39,13 @@ function init() {
 
 	$.each($('.js-to-scroll'), function (index, value) {
 		$(value).on('click', () => {
-			scroll.scrollTo($(value).attr('data-scroll-to'))
+			if (window.innerWidth < 1025) {
+				setTimeout(() => {
+					scroll.scrollTo($(value).attr('data-scroll-to'), { offset: -20 });
+				}, 400);
+			} else {
+				scroll.scrollTo($(value).attr('data-scroll-to'), { offset: -70 })
+			}
 		})
 	});
 
@@ -55,8 +64,8 @@ function init() {
 
 		let strokeValue = 354 - 354 / 100 * scrollValue;
 
-		$('#ancore-top-value').html(`${scrollValue} %`);
-		$('#ancore-top-circle').css('stroke-dashoffset', strokeValue);
+		$(ancoreTopValue).html(`${scrollValue} %`);
+		$(ancoreTopCircle).css('stroke-dashoffset', strokeValue);
 
 		if (scrollValue < 98 && $(ancoreTop).hasClass('js-page-end')) {
 			$(ancoreTop).removeClass('js-page-end');
@@ -82,7 +91,7 @@ function init() {
 		if (window.innerWidth <= 1024) {
 			$(headerPage).css('padding-top', '0');
 		}
-		// scroll.stop()
+		// scroll.init()
 		// scroll.start()
 		scroll.update()
 	}

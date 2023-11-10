@@ -85,7 +85,6 @@
 		align-items: center;
 		justify-content: center;
 		transition: $duration-normal;
-		cursor: pointer;
 
 		&::before {
 			content: "";
@@ -99,6 +98,10 @@
 			background-repeat: no-repeat;
 			opacity: 0;
 			transition: $duration-normal;
+		}
+
+		.js-to-scroll {
+			cursor: pointer;
 		}
 
 		&:hover {
