@@ -8,6 +8,8 @@ function init() {
 	let htmlPage = $('html');
 	let ancoreTopValue = $('#ancore-top-value');
 	let ancoreTopCircle = $('#ancore-top-circle');
+	let flag = window.innerWidth;
+
 	const scroll = new LocomotiveScroll({
 		el: document.querySelector('[data-scroll-container]'),
 		smooth: true,
@@ -42,7 +44,7 @@ function init() {
 			if (window.innerWidth < 1025) {
 				setTimeout(() => {
 					scroll.scrollTo($(value).attr('data-scroll-to'), { offset: -20 });
-				}, 400);
+				}, 450);
 			} else {
 				scroll.scrollTo($(value).attr('data-scroll-to'), { offset: -70 })
 			}
@@ -53,9 +55,9 @@ function init() {
 		scroll.scrollTo('top')
 	});
 
-	let scrollValue;
 	scroll.on('scroll', ({ limit, scroll }) => {
 		//ancore top
+		let scrollValue;
 		if (!$(htmlPage).hasClass("has-scroll-smooth")) {
 			scrollValue = Math.round(getScrollPercentage())
 		} else {
@@ -87,13 +89,26 @@ function init() {
 		}
 	});
 
+
 	function resize() {
 		if (window.innerWidth <= 1024) {
 			$(headerPage).css('padding-top', '0');
 		}
-		// scroll.init()
-		// scroll.start()
+
+		// if (window.innerWidth <= 1024 && flag > 1024) {
+		// 	scroll.scrollTo('top')
+		// 	flag = window.innerWidth
+		// }
+
+		// if (window.innerWidth > 1024 && flag < 1024) {
+		// 	scroll.scrollTo('top')
+		// 	flag = window.innerWidth
+		// }
+
+		scroll.start()
 		scroll.update()
+		let wheelEvent = new WheelEvent("mousewheel", { deltaY: -100 });
+		$('body')[0].dispatchEvent(wheelEvent);
 	}
 
 	window.addEventListener('resize', resize);

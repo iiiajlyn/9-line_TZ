@@ -92,13 +92,13 @@
 		}
 	}
 
-	// &__box {
-	// 	@include desktop {
-	// 		display: inline-flex;
-	// 		align-items: flex-end;
-	// 		height: calc(100vh - 250px);
-	// 	}
-	// }
+	&__box {
+		@include desktop {
+			display: inline-flex;
+			align-items: flex-end;
+			height: calc(100vh - 250px);
+		}
+	}
 }
 
 .work-experience {
