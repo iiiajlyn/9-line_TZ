@@ -1,4 +1,5 @@
 import * as bodyScrollLock from 'body-scroll-lock';
+import $ from 'jquery';
 
 let vars = {};
 

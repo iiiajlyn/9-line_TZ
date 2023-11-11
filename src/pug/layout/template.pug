@@ -1,4 +1,4 @@
-include mixins
+include _mixins
 
 block vars
 	-
@@ -281,7 +281,7 @@ html(class=html.classList)&attributes(html.attrs)
 	body(class=body.classList)&attributes(body.attrs)
 		block body-start
 		.site(data-scroll-container)
-			include data
+			include _data
 			include header
 			block content
 			include footer

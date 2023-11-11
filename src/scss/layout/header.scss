@@ -62,6 +62,7 @@
 		justify-content: flex-end;
 		font-weight: 700;
 		font-style: normal;
+		cursor: pointer;
 
 		@include desktop {
 			@include gap(30px);
@@ -99,10 +100,6 @@
 			background-repeat: no-repeat;
 			opacity: 0;
 			transition: $duration-normal;
-		}
-
-		.js-to-scroll {
-			cursor: pointer;
 		}
 
 		&:hover {

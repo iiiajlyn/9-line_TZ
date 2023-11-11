@@ -20,24 +20,29 @@
 *		}
 *	}
 */
+// @mixin browser-ie {
+// 	.is-browser-ie &,
+// 	_:-ms-input-placeholder, :root & {
+// 		@content;
+// 	}
+// }
 @mixin browser-ie {
-	.is-browser-ie &,
-	_:-ms-input-placeholder, :root & {
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
 		@content;
 	}
 }
-
 
 /**
 * Target IE-Edge
 */
 @mixin browser-ie-edge {
 	.is-browser-ie-edge &,
-	_:-ms-lang(x), _:-webkit-full-screen, & {
+	_:-ms-lang(x),
+	_:-webkit-full-screen,
+	& {
 		@content;
 	}
 }
-
 
 /**
 * Target Firefox
@@ -52,24 +57,25 @@
 	}
 }
 
-
 /**
 * Target Safari
 */
 @mixin browser-safari {
 	.is-browser-safari &,
-	_::-webkit-full-page-media, _:future, & {
+	_::-webkit-full-page-media,
+	_:future,
+	& {
 		@content;
 	}
 }
-
 
 /**
 * Target all WebKit browsers
 */
 @mixin browser-webkit {
 	.is-engine-webkit &,
-	.selector:not(*:root), & {
+	.selector:not(*:root),
+	& {
 		@content;
 	}
 }

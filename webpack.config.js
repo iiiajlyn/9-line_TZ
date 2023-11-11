@@ -4,7 +4,6 @@ const path = require('path');
 module.exports = {
 	entry: {
 		index: './src/js/index.js',
-		isIE: './src/js/isIE.js',
 	},
 	output: {
 		path: path.resolve(__dirname, 'build/js'),
@@ -23,14 +22,12 @@ module.exports = {
 	},
 	optimization: {
 		splitChunks: {
-			// chunks: 'all',
 			cacheGroups: {
 				vendor: {
 					chunks: 'initial',
 					test: /node_modules|bower_components/,
 					name: 'vendor',
 					enforce: true,
-					minChunks: 2,
 				},
 			},
 		},

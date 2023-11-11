@@ -43,7 +43,8 @@
 			@include grid-column(1, 5);
 
 			@include browser-ie {
-				-ms-grid-row: 3;
+				/* stylelint-disable-next-line declaration-no-important */
+				-ms-grid-row: 3 !important;
 			}
 		}
 	}
@@ -67,37 +68,34 @@
 			width: 100%;
 
 			@include browser-ie {
-				-ms-grid-row: 2;
+				/* stylelint-disable-next-line declaration-no-important */
+				-ms-grid-row: 2 !important;
 			}
 		}
 	}
 }
 
 .picture-experience {
-	&__img {
+	&__box {
 		@include desktop {
-			display: flex;
-			padding-top: 100px;
-			height: fit-content;
-
-			@include browser-ie {
-				align-items: flex-start;
-				height: 500px;
-			}
+			display: inline-flex;
+			align-items: flex-end;
+			justify-content: center;
 		}
+	}
 
+	&__img {
 		@include devices {
 			width: 200px;
 			height: 200px;
 		}
 	}
 
-	&__box {
-		@include desktop {
-			display: inline-flex;
-			align-items: flex-end;
-			height: calc(100vh - 250px);
-		}
+	@include desktop {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
 	}
 }
 

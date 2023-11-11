@@ -1,6 +1,6 @@
 import LocomotiveScroll from 'locomotive-scroll';
 import helpers from '../helpers';
-import { getScrollPercentage } from '../modules/getScrollPercentage'
+import {getScrollPercentage} from '../modules/getScrollPercentage';
 
 function init() {
 	let headerPage = $('.header');
@@ -8,9 +8,9 @@ function init() {
 	let htmlPage = $('html');
 	let ancoreTopValue = $('#ancore-top-value');
 	let ancoreTopCircle = $('#ancore-top-circle');
-	let flag = window.innerWidth;
+	// let flag = window.innerWidth;
 
-	const scroll = new LocomotiveScroll({
+	const locomotiveScroll = new LocomotiveScroll({
 		el: document.querySelector('[data-scroll-container]'),
 		smooth: true,
 		smoothMobile: true,
@@ -19,49 +19,49 @@ function init() {
 	});
 
 	if (window.innerWidth < 1025) {
-		$.each($('[data-scroll-speed]'), function (index, value) {
+		$.each($('[data-scroll-speed]'), (index, value) => {
 			value.removeAttribute('data-scroll-speed');
-			value.setAttribute('data-scroll-repeat', '')
+			value.setAttribute('data-scroll-repeat', '');
 		});
 	}
 
 	if (helpers.psi()) {
 		let style = document.createElement('style');
-		style.innerHTML = '*{transition: none !important;}'
+		style.innerHTML = '*{transition: none !important;}';
 		$(htmlPage).addClass('Chrome-Lighthouse');
 		$(htmlPage).prepend(style);
-		$.each($('[data-scroll-speed]'), function (index, value) {
+		$.each($('[data-scroll-speed]'), (index, value) => {
 			value.removeAttribute('data-scroll-speed');
 		});
 
-		return
-	} else {
-		$('head').append('<link rel="stylesheet" href="./css/locomotiveScroll.css" type="text/css" />');
+		return;
 	}
 
-	$.each($('.js-to-scroll'), function (index, value) {
+	$('head').append('<link rel="stylesheet" href="./css/locomotiveScroll.css" type="text/css" />');
+
+	$.each($('.js-to-scroll'), (index, value) => {
 		$(value).on('click', () => {
 			if (window.innerWidth < 1025) {
 				setTimeout(() => {
-					scroll.scrollTo($(value).attr('data-scroll-to'), { offset: -20 });
+					locomotiveScroll.scrollTo($(value).attr('data-scroll-to'), {offset: -20});
 				}, 450);
 			} else {
-				scroll.scrollTo($(value).attr('data-scroll-to'), { offset: -70 })
+				locomotiveScroll.scrollTo($(value).attr('data-scroll-to'), {offset: -70});
 			}
-		})
+		});
 	});
 
 	$(ancoreTop).on('click', () => {
-		scroll.scrollTo('top')
+		locomotiveScroll.scrollTo('top');
 	});
 
-	scroll.on('scroll', ({ limit, scroll }) => {
-		//ancore top
+	locomotiveScroll.on('scroll', ({limit, scroll}) => {
+		// ancore top
 		let scrollValue;
-		if (!$(htmlPage).hasClass("has-scroll-smooth")) {
-			scrollValue = Math.round(getScrollPercentage())
+		if (!$(htmlPage).hasClass('has-scroll-smooth')) {
+			scrollValue = Math.round(getScrollPercentage());
 		} else {
-			scrollValue = Math.round(scroll.y / limit.y * 100)
+			scrollValue = Math.round(scroll.y / limit.y * 100);
 		}
 
 		let strokeValue = 354 - 354 / 100 * scrollValue;
@@ -77,7 +77,7 @@ function init() {
 			$(ancoreTop).addClass('js-page-end');
 		}
 
-		//header
+		// header
 		if (scroll.y >= 80 && window.innerWidth > 1024) {
 			$(headerPage).addClass('is-fixed');
 			$(headerPage).css('padding-top', '20px');
@@ -88,7 +88,6 @@ function init() {
 			$(headerPage).css('padding-top', `${100 - scroll.y}px`);
 		}
 	});
-
 
 	function resize() {
 		if (window.innerWidth <= 1024) {
@@ -105,9 +104,9 @@ function init() {
 		// 	flag = window.innerWidth
 		// }
 
-		scroll.start()
-		scroll.update()
-		let wheelEvent = new WheelEvent("wheel", { deltaY: 100 });
+		locomotiveScroll.start();
+		locomotiveScroll.update();
+		let wheelEvent = new WheelEvent('wheel', {deltaY: 100});
 		// let wheelEvent1 = new WheelEvent("wheel", { deltaY: -100 });
 		$('body')[0].dispatchEvent(wheelEvent);
 		// $('html')[0].dispatchEvent(wheelEvent1);
@@ -116,7 +115,6 @@ function init() {
 
 	window.addEventListener('resize', resize);
 	window.addEventListener('load', resize);
-
 }
 
 export default {
