@@ -1,73 +1,105 @@
-import helpers from '../helpers';
 import Pace from 'pace-js';
 
-// Плавное удаление
+// eslint-disable-next-line no-useless-escape
+let psi = navigator.userAgent.match(/(Mozilla\/5\.0 \(Linux; Android 11; moto g power \(2022\)\) AppleWebKit\/537\.36 \(KHTML, like Gecko\) Chrome\/109\.0.0.0 Mobile Safari\/537\.36)|(Mozilla\/5\.0 \(Macintosh; Intel Mac OS X 10_15_7\) AppleWebKit\/537\.36 \(KHTML, like Gecko\) Chrome\/109\.0\.0\.0 Safari\/537\.36)|(Speed Insights)|(Chrome-Lighthouse)|(PSTS[\d\.]+)/);
 
+// Создать куки запись
+let setCookie = (name, value, days) => {
+	let expires = '';
+
+	if (days) {
+		let date = new Date();
+		date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+		expires = `; expires=${date.toUTCString()}`;
+	}
+
+	document.cookie = `${name}=${value || ''}${expires}; path=/`;
+};
+
+// Получить куки запись
+let getCookie = (name) => {
+	let nameEQ = `${name}=`;
+	let ca = document.cookie.split(';');
+
+	for (let i = 0; i < ca.length; i++) {
+		let c = ca[i];
+
+		while (c.charAt(0) === ' ') {
+			c = c.substring(1, c.length);
+		}
+
+		if (c.indexOf(nameEQ) === 0) {
+			return c.substring(nameEQ.length, c.length);
+		}
+	}
+
+	return null;
+};
+
+// Плавное удаление
 function removeFadeOut(el, speed) {
 	let seconds = speed / 1000;
 	el.style.transition = `opacity ${seconds}s ease`;
-
 	el.style.opacity = 0;
 	setTimeout(() => {
-		el.parentNode.removeChild(el);
+		el.remove();
 	}, speed);
 }
 
-// Прелоадер;
-
-function init() {
-	if (!helpers.getCookie('lastActivity') && !helpers.psi()) {
-		let flag = 0;
-		let preloader = document.createElement('div');
-		let preloaderImg = document.createElement('div');
-		$(preloader).addClass('preloader');
-		$(preloaderImg).addClass('man-rocket');
-
-		// Опции
-		Pace.options = {
-			ajax: false,
-			document: false,
-			eventLag: false,
-			elements: {
-				selectors: ['.site'],
-			},
-		};
-
-		// Начало
-		Pace.on('start', () => {
-			$('.site').after(preloader);
-			$(preloader).prepend(preloaderImg);
-			helpers.lockScroll(true, $(preloader));
-		});
-
-		// Прогресс
-		Pace.on('progress', (progress) => {
-			if (progress > 90) {
-				flag++;
-				if (flag > 50) {
-					Pace.stop();
-				}
-			}
-
-			$(preloaderImg).css('left', `${progress}%`);
-			$(preloaderImg).css('bottom', `${progress}%`);
-		});
-
-		// Конец
-		Pace.on('hide', () => {
-			helpers.lockScroll(false, $(preloader));
-			removeFadeOut(preloader, 1000);
-		});
-
-		Pace.start();
-	}
-
-	// Пишем куки
-	let date = new Date();
-	helpers.setCookie('lastActivity', date, 30);
+function paceProgress(img, width, height, progress) {
+	img.style.transform = `translateX(${width * progress}px) translateY(-${height * progress}px)`;
 }
 
-export default {
-	init,
-	removeFadeOut,
-};
+// Прелоадер;
+if (!getCookie('lastActivity') && !psi) {
+	let preloader = document.createElement('div');
+	let preloaderImg = document.createElement('div');
+	let progressLoad = 0;
+	let windowWidth = window.innerWidth + 591;
+	let windowHeight = window.innerHeight + 591;
+	preloader.classList.add('preloader');
+	preloaderImg.classList.add('preloader__img');
+	document.querySelector('.site').before(preloader);
+	preloader.prepend(preloaderImg);
+	// Опции
+	Pace.options = {
+		ajax: false,
+		document: true,
+		eventLag: false,
+	};
+
+	// Начало
+	Pace.on('start', () => {
+		document.querySelector('.site').before(preloader);
+		preloader.prepend(preloaderImg);
+	});
+
+	// Прогресс
+	let progressTick = setInterval(() => {
+		paceProgress(preloaderImg, windowWidth, windowHeight, progressLoad);
+	}, 1000);
+	Pace.on('progress', (progress) => {
+		progressLoad = Math.ceil(progress) / 100;
+		if (progressLoad >= 1) {
+			Pace.stop();
+			removeFadeOut(preloader, 1000);
+			clearInterval(progressTick);
+		}
+	});
+
+	// Конец
+	Pace.on('done', () => {
+		setTimeout(() => {
+			document.querySelector('.pace-inactive').remove();
+			document.querySelector('.pace-active').remove();
+			document.querySelector('body').classList.remove('pace-running');
+			document.querySelector('body').classList.remove('pace-done');
+		}, 1000);
+	});
+
+	Pace.start();
+}
+
+// Пишем куки
+let date = new Date();
+setCookie('lastActivity', date, 30);

@@ -275,6 +275,7 @@ html(class=html.classList)&attributes(html.attrs)
 				link(rel="manifest" href!=link.manifest)
 			if link.maskIcon.href !== null
 				link(rel="mask-icon" href!=link.maskIcon.href color=link.maskIcon.color)
+		script(async src!=`${baseDir}js/preloader.js?v=${Date.now()}`)
 		block styles
 			link(rel="stylesheet" href!=`${baseDir}css/${pageName}.css?v=${Date.now()}`)
 		block head-end
@@ -290,11 +291,6 @@ html(class=html.classList)&attributes(html.attrs)
 				if (!('IntersectionObserver' in window)) {
 					var script = document.createElement("script");
 					script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
-					document.getElementsByTagName('head')[0].appendChild(script);
-				}
-				if (window.document.documentMode) {
-					var script = document.createElement("script");
-					script.src = './js/isIE.js';
 					document.getElementsByTagName('head')[0].appendChild(script);
 				}
 			script(nomodule src="https://polyfill.io/v3/polyfill.min.js?features=Object.assign%2CElement.prototype.append%2CNodeList.prototype.forEach%2CCustomEvent%2Csmoothscroll" crossorigin="anonymous")

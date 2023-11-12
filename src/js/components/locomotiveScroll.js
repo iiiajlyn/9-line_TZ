@@ -1,3 +1,4 @@
+import ResizeObserver from 'resize-observer-polyfill';
 import LocomotiveScroll from 'locomotive-scroll';
 import helpers from '../helpers';
 import {getScrollPercentage} from '../modules/getScrollPercentage';
@@ -88,13 +89,17 @@ function init() {
 			$(headerPage).css('padding-top', `${100 - scroll.y}px`);
 		}
 	});
+
+	// fix bottom empty
 	new ResizeObserver(() => locomotiveScroll.update()).observe(
 		document.querySelector('[data-scroll-container]'),
 	);
+
 	function resize() {
 		if (window.innerWidth <= 1024) {
 			$(headerPage).css('padding-top', '0');
 		}
+		locomotiveScroll.update();
 	}
 
 	window.addEventListener('resize', resize);

@@ -1,0 +1,9 @@
+.pace-running {
+	height: 100vh;
+	overflow: hidden;
+
+	&.pace-done {
+		height: auto;
+		overflow: auto;
+	}
+}

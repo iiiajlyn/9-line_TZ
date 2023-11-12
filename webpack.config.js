@@ -4,6 +4,7 @@ const path = require('path');
 module.exports = {
 	entry: {
 		index: './src/js/index.js',
+		preloader: './src/js/components/preloader.js',
 	},
 	output: {
 		path: path.resolve(__dirname, 'build/js'),
@@ -28,6 +29,7 @@ module.exports = {
 					test: /node_modules|bower_components/,
 					name: 'vendor',
 					enforce: true,
+					minChunks: 2,
 				},
 			},
 		},

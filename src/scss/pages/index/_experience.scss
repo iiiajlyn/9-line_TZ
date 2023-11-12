@@ -63,8 +63,8 @@
 		@include devices {
 			@include grid-column(1, 5);
 
-			padding-top: 15px;
-			padding-bottom: 20px;
+			margin-top: 15px;
+			margin-bottom: 20px;
 			width: 100%;
 
 			@include browser-ie {

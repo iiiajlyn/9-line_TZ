@@ -42,8 +42,8 @@
 	}
 }
 
-@mixin browser-ie {
-	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-		@content;
-	}
-}
+// @mixin browser-ie {
+// 	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+// 		@content;
+// 	}
+// }

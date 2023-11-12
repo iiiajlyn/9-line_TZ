@@ -92,6 +92,7 @@
 		"object-fit-videos": "1.0.4",
 		"pace-js": "^1.2.4",
 		"require-dir": "^1.2.0",
+		"resize-observer-polyfill": "1.5.1",
 		"svg4everybody": "2.1.9"
 	},
 	"husky": {

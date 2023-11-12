@@ -203,6 +203,7 @@ function resize() {
 
 /**
 * Проверка на бота Page Speed
+* @returns {boolean}
 */
 vars.psi = () => {
 	// eslint-disable-next-line no-useless-escape
