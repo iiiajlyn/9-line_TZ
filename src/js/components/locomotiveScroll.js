@@ -9,6 +9,7 @@ function init() {
 	let htmlPage = $('html');
 	let ancoreTopValue = $('#ancore-top-value');
 	let ancoreTopCircle = $('#ancore-top-circle');
+	let paddingTop = 100;
 	// let flag = window.innerWidth;
 
 	const locomotiveScroll = new LocomotiveScroll({
@@ -82,11 +83,13 @@ function init() {
 		if (scroll.y >= 80 && window.innerWidth > 1024) {
 			$(headerPage).addClass('is-fixed');
 			$(headerPage).css('padding-top', '20px');
+			paddingTop = 20;
 		}
 
 		if (scroll.y <= 80 && window.innerWidth > 1024) {
 			$(headerPage).removeClass('is-fixed');
 			$(headerPage).css('padding-top', `${100 - scroll.y}px`);
+			paddingTop = 100 - scroll.y;
 		}
 	});
 
@@ -98,6 +101,8 @@ function init() {
 	function resize() {
 		if (window.innerWidth <= 1024) {
 			$(headerPage).css('padding-top', '0');
+		} else {
+			$(headerPage).css('padding-top', `${paddingTop}px`);
 		}
 		locomotiveScroll.update();
 	}

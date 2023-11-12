@@ -34,7 +34,9 @@
 			opacity: 0;
 			visibility: hidden;
 			transform: translateX(100%);
-			transition: $duration-normal;
+			transition:
+				opacity $duration-normal,
+				transform $duration-normal;
 			-webkit-overflow-scrolling: touch;
 		}
 
@@ -86,7 +88,9 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		transition: $duration-normal;
+		transition:
+			opacity $duration-normal,
+			color $duration-normal;
 
 		&::before {
 			content: "";
@@ -99,7 +103,7 @@
 			background-size: contain;
 			background-repeat: no-repeat;
 			opacity: 0;
-			transition: $duration-normal;
+			transition: opacity $duration-normal;
 		}
 
 		&:hover {
@@ -198,7 +202,9 @@
 		height: 2px;
 		color: $color-black;
 		background-color: currentColor;
-		transition: $duration-normal;
+		transition:
+			opacity $duration-normal,
+			color $duration-normal;
 	}
 
 	@include active {

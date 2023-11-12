@@ -62,6 +62,10 @@
 		transition: $duration-normal;
 	}
 
+	&:hover {
+		opacity: 0.7;
+	}
+
 	&.js-page-end {
 		bottom: 90px;
 

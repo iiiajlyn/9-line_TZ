@@ -51,7 +51,7 @@ p {
 a,
 button {
 	outline: none;
-	transition: $duration-normal;
+	transition: opacity $duration-normal, color $duration-normal, background-color $duration-normal;
 	cursor: pointer;
 
 	&:hover {
@@ -139,7 +139,7 @@ strong {
 	padding: 0;
 	text-align: center;
 	background-color: transparent;
-	transition: $duration-normal;
+	transition: opacity $duration-normal, color $duration-normal, background-color $duration-normal;
 	user-select: none;
 
 	&__content {
