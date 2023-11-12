@@ -88,33 +88,16 @@ function init() {
 			$(headerPage).css('padding-top', `${100 - scroll.y}px`);
 		}
 	});
-
+	new ResizeObserver(() => locomotiveScroll.update()).observe(
+		document.querySelector('[data-scroll-container]'),
+	);
 	function resize() {
 		if (window.innerWidth <= 1024) {
 			$(headerPage).css('padding-top', '0');
 		}
-
-		// if (window.innerWidth <= 1024 && flag > 1024) {
-		// 	scroll.scrollTo('top')
-		// 	flag = window.innerWidth
-		// }
-
-		// if (window.innerWidth > 1024 && flag < 1024) {
-		// 	scroll.scrollTo('top')
-		// 	flag = window.innerWidth
-		// }
-
-		locomotiveScroll.start();
-		locomotiveScroll.update();
-		let wheelEvent = new WheelEvent('wheel', {deltaY: 100});
-		// let wheelEvent1 = new WheelEvent("wheel", { deltaY: -100 });
-		$('body')[0].dispatchEvent(wheelEvent);
-		// $('html')[0].dispatchEvent(wheelEvent1);
-		// $('main')[0].dispatchEvent(wheelEvent);
 	}
 
 	window.addEventListener('resize', resize);
-	window.addEventListener('load', resize);
 }
 
 export default {

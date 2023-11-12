@@ -1,9 +1,8 @@
 import helpers from '../helpers';
 import Pace from 'pace-js';
 
-/**
-* Плавное удаление
-*/
+// Плавное удаление
+
 function removeFadeOut(el, speed) {
 	let seconds = speed / 1000;
 	el.style.transition = `opacity ${seconds}s ease`;
@@ -14,9 +13,7 @@ function removeFadeOut(el, speed) {
 	}, speed);
 }
 
-/**
-* Прелоадер
-*/
+// Прелоадер;
 
 function init() {
 	if (!helpers.getCookie('lastActivity') && !helpers.psi()) {
@@ -25,10 +22,8 @@ function init() {
 		let preloaderImg = document.createElement('div');
 		$(preloader).addClass('preloader');
 		$(preloaderImg).addClass('man-rocket');
-		console.log(helpers.getCookie('lastActivity'));
-		/**
-		* Опции
-		*/
+
+		// Опции
 		Pace.options = {
 			ajax: false,
 			document: false,
@@ -38,18 +33,14 @@ function init() {
 			},
 		};
 
-		/**
-		* Начало
-		*/
+		// Начало
 		Pace.on('start', () => {
 			$('.site').after(preloader);
 			$(preloader).prepend(preloaderImg);
 			helpers.lockScroll(true, $(preloader));
 		});
 
-		/**
-		* Прогресс
-		*/
+		// Прогресс
 		Pace.on('progress', (progress) => {
 			if (progress > 90) {
 				flag++;
@@ -62,9 +53,7 @@ function init() {
 			$(preloaderImg).css('bottom', `${progress}%`);
 		});
 
-		/**
-		* Конец
-		*/
+		// Конец
 		Pace.on('hide', () => {
 			helpers.lockScroll(false, $(preloader));
 			removeFadeOut(preloader, 1000);
@@ -73,9 +62,7 @@ function init() {
 		Pace.start();
 	}
 
-	/**
-	* Пишем куки
-	*/
+	// Пишем куки
 	let date = new Date();
 	helpers.setCookie('lastActivity', date, 30);
 }

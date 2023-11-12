@@ -86,7 +86,7 @@
 
 	&__img {
 		@include devices {
-			width: 200px;
+			width: auto;
 			height: 200px;
 		}
 	}
