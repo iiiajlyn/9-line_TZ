@@ -128,16 +128,20 @@ section.section.experience#experience(data-scroll-section)
 						p
 							| Supported retail accounting system LS&nbsp;Trade, troubleshoot technical problems.
 
-		.experience__picture.picture-experience
-			+lazyPicture({
-				src: `${baseDir}images/pages/home/manMagic`,
-				alt: 'Magic man',
-				type: 'png',
-				device: true,
-				retina: true,
-				webp: true
-			}).picture-experience__img(data-scroll-sticky data-scroll-target="#experience" data-scroll)
-				//- }).picture-experience__img.a-top(data-scroll-repeat data-scroll-class="is-view" data-scroll)
+		.experience__picture.picture-experience#experience-box
+			.picture-experience__box(data-scroll-sticky data-scroll-target="#experience-box" data-scroll)
+				picture.picture-experience__img(itemprop="image")
+					source(
+						srcset="./images/pages/home/manMagic.webp, ./images/pages/home/manMagic@2x.webp 2x"
+						media="(min-width: 1025px)"
+						type="image/webp"
+					)
+					source(
+						srcset="./images/pages/home/manMagic@mob.webp, ./images/pages/home/manMagic@mob2x.webp 2x"
+						media="(max-width: 1024px)"
+						type="image/webp"
+					)
+					img(alt="Magic man" width="100%" height="100%" src="./images/pages/home/manMagic.png")
 
 		.experience__education.education-experience
 			h2.education-experience__title.a-top(data-scroll-repeat data-scroll-class="is-view" data-scroll)

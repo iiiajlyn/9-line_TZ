@@ -19,31 +19,19 @@
 }
 
 h1 {
+	@include font-size-large;
+
 	font-weight: 700;
 	font-style: normal;
 	line-height: $line-height-primary;
-
-	@include desktop {
-		font-size: 36px;
-	}
-
-	@include devices {
-		font-size: 28px;
-	}
 }
 
 h2 {
+	@include font-size-medium;
+
 	font-weight: 700;
 	font-style: normal;
-	line-height: normal;
-
-	@include desktop {
-		font-size: 24px;
-	}
-
-	@include devices {
-		font-size: 20px;
-	}
+	line-height: $line-height-normal;
 }
 
 .share-social {
@@ -58,17 +46,12 @@ h2 {
 
 	&__button {
 		border: none;
-		padding: 0;
 		background: transparent;
 	}
 }
 
 .section {
 	position: relative;
-	padding: env(safe-area-inset-right, 12px) env(safe-area-inset-left, 12px);
-}
-
-.is-browser-ie {
-	overflow: hidden;
-	height: 100vh;
+	padding-right: env(safe-area-inset-right, 12px);
+	padding-left: env(safe-area-inset-left, 12px);
 }

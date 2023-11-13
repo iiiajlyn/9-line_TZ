@@ -7,13 +7,13 @@
 	height: calc(100vh + 591px);
 	background-color: $color-white;
 
-	.man-rocket {
+	&__img {
 		@include sprite("manRocket");
 
 		content: "";
 		position: absolute;
 		left: 0%;
 		bottom: 0%;
-		transition: 1s;
+		transition: transform 1s linear;
 	}
 }

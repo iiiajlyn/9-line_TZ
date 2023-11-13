@@ -69,7 +69,7 @@ function init() {
 		.on('click.header', (e) => {
 			let $container = $('.header__menu');
 			if ($container.is(e.target) && $container.has(e.target).length === 0 && $container.hasClass('is-active')) {
-				closeMenu();
+				// closeMenu();
 				$('.js-burger').removeClass('is-active');
 			}
 		})

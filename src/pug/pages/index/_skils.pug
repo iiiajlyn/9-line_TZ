@@ -30,11 +30,12 @@ section.section.skills#skills(data-scroll-section)
 				p
 					| Conversational English and Native Russian
 
-		+lazyPicture({
-			src: `${baseDir}images/pages/home/handsLike`,
-			alt: 'I love you',
-			type: 'png',
-			device: true,
-			retina: true,
-			webp: true
-		}).skills__img.a-scale(data-scroll-repeat data-scroll-class="is-view" data-scroll)
+		.skills__box
+			+lazyPicture({
+				src: `${baseDir}images/pages/home/handsLike`,
+				alt: 'I love you',
+				type: 'png',
+				device: true,
+				retina: true,
+				webp: true
+			}).skills__img.a-scale(data-scroll-class="is-view" data-scroll-repeat data-scroll)

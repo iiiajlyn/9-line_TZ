@@ -1,8 +1,8 @@
-extends pug/base
-
+extends ../layout/template
 prepend vars
 
 append vars
+	- pageName = 'index'
 	- title = 'Иван Frontend разработчик'
 	- description = 'Как разработчик, я высоко ценю способность воплотить видение дизайнера в жизнь, что считаю очень полезным для бизнеса. Я получаю огромное удовлетворение, наблюдая за работой от идеи до дизайна, особенно когда она появляется в руках пользователя. Я считаю, что ориентированные на пользователя решения являются наиболее ценными цифровыми ресурсами будущего.'
 	- image = `${baseDir}images/base/share.jpg`
@@ -29,8 +29,7 @@ append vars
 	- meta.twitterImage = image
 
 block content
-	.site(data-scroll-container)
-		include pug/data
-		include pug/layout/header
-		include pug/pages/home
-		include pug/layout/footer
+	main.home#main(itemscope itemtype="http://schema.org/Person")
+		include index/_aboutUser
+		include index/_experience
+		include index/_skils

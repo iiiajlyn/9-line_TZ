@@ -1,4 +1,5 @@
 import * as bodyScrollLock from 'body-scroll-lock';
+import $ from 'jquery';
 
 let vars = {};
 
@@ -202,6 +203,7 @@ function resize() {
 
 /**
 * Проверка на бота Page Speed
+* @returns {boolean}
 */
 vars.psi = () => {
 	// eslint-disable-next-line no-useless-escape

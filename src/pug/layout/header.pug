@@ -7,13 +7,12 @@ header.header
 		nav.header__menu
 			ul.header__list(itemscope itemtype="http://www.schema.org/SiteNavigationElement")
 				each object, key in data.header.menu
-					li.header__link
-						span.js-to-scroll(
-							data-scroll-to=object.scrollTo
-							data-link=key
-							itemprop="url"
-						)
-							!= object.name
+					li.header__link.js-to-scroll(
+						data-scroll-to=object.scrollTo
+						data-link=key
+						itemprop="url"
+					)
+						!= object.name
 			.header__img
 				+lazyPicture({
 					src: `${baseDir}images/base/hourglass`,

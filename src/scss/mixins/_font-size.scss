@@ -1,0 +1,44 @@
+/* stylelint-disable scss/dollar-variable-empty-line-before */
+@mixin font-size-normal {
+	font-size: 14px;
+}
+
+@mixin font-size-medium {
+	@include desktop {
+		font-size: 24px;
+	}
+
+	@include devices {
+		font-size: 20px;
+	}
+}
+
+@mixin font-size-large {
+	@include desktop {
+		font-size: 36px;
+	}
+
+	@include devices {
+		font-size: 28px;
+	}
+}
+
+@mixin font-size-menu {
+	@include desktop {
+		font-size: 18px;
+	}
+
+	@include devices {
+		font-size: 26px;
+	}
+}
+
+@mixin font-size($desktop, $devices: $desktop) {
+	@include desktop {
+		font-size: $desktop;
+	}
+
+	@include devices {
+		font-size: $devices;
+	}
+}

@@ -3,8 +3,8 @@ const path = require('path');
 
 module.exports = {
 	entry: {
-		main: './src/js/main.js',
-		isIE: './src/js/isIE.js',
+		index: './src/js/index.js',
+		preloader: './src/js/components/preloader.js',
 	},
 	output: {
 		path: path.resolve(__dirname, 'build/js'),
@@ -23,7 +23,6 @@ module.exports = {
 	},
 	optimization: {
 		splitChunks: {
-			// chunks: 'all',
 			cacheGroups: {
 				vendor: {
 					chunks: 'initial',
