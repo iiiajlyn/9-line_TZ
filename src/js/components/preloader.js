@@ -78,7 +78,7 @@ if (!getCookie('lastActivity') && !psi) {
 	// Прогресс
 	let progressTick = setInterval(() => {
 		paceProgress(preloaderImg, windowWidth, windowHeight, progressLoad);
-	}, 1010);
+	}, 1050);
 	Pace.on('progress', (progress) => {
 		progressLoad = Math.ceil(progress) / 100;
 		if (progressLoad >= 1) {
