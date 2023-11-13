@@ -20,6 +20,11 @@ function init() {
 		multiplier: 0.8,
 	});
 
+	// fix bottom empty
+	new ResizeObserver(() => locomotiveScroll.update()).observe(
+		document.querySelector('[data-scroll-container]'),
+	);
+
 	if (window.innerWidth < 1025) {
 		$.each($('[data-scroll-speed]'), (index, value) => {
 			value.removeAttribute('data-scroll-speed');
@@ -93,11 +98,6 @@ function init() {
 		}
 	});
 
-	// fix bottom empty
-	new ResizeObserver(() => locomotiveScroll.update()).observe(
-		document.querySelector('[data-scroll-container]'),
-	);
-
 	function resize() {
 		if (window.innerWidth <= 1024) {
 			$(headerPage).css('padding-top', '0');
@@ -105,6 +105,9 @@ function init() {
 			$(headerPage).css('padding-top', `${paddingTop}px`);
 		}
 		locomotiveScroll.update();
+		// new ResizeObserver(() => locomotiveScroll.update()).observe(
+		// 	document.querySelector('[data-scroll-container]'),
+		// );
 	}
 
 	window.addEventListener('resize', resize);
