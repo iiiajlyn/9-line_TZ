@@ -116,6 +116,7 @@ block vars
 doctype html
 html(class=html.classList)&attributes(html.attrs)
 	head
+		script(async src!=`${baseDir}js/preloader.js?v=${Date.now()}`)
 		block head-start
 		block meta
 			if meta.charset !== null
@@ -275,7 +276,6 @@ html(class=html.classList)&attributes(html.attrs)
 				link(rel="manifest" href!=link.manifest)
 			if link.maskIcon.href !== null
 				link(rel="mask-icon" href!=link.maskIcon.href color=link.maskIcon.color)
-		script(async src!=`${baseDir}js/preloader.js?v=${Date.now()}`)
 		block styles
 			link(rel="stylesheet" href!=`${baseDir}css/${pageName}.css?v=${Date.now()}`)
 		block head-end

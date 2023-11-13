@@ -78,7 +78,7 @@
 .picture-experience {
 	&__box {
 		@include desktop {
-			display: inline-flex;
+			display: flex;
 			align-items: flex-end;
 			justify-content: center;
 		}

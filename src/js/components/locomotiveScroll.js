@@ -1,7 +1,7 @@
 import ResizeObserver from 'resize-observer-polyfill';
-import LocomotiveScroll from 'locomotive-scroll';
-import helpers from '../helpers';
 import {getScrollPercentage} from '../modules/getScrollPercentage';
+import helpers from '../helpers';
+import LocomotiveScroll from 'locomotive-scroll';
 
 function init() {
 	let headerPage = $('.header');
@@ -17,7 +17,7 @@ function init() {
 		smooth: true,
 		smoothMobile: true,
 		resetNativeScroll: true,
-		multiplier: 0.8,
+		// multiplier: 0.8,
 	});
 
 	// fix bottom empty
@@ -66,9 +66,9 @@ function init() {
 		// ancore top
 		let scrollValue;
 		if (!$(htmlPage).hasClass('has-scroll-smooth')) {
-			scrollValue = Math.round(getScrollPercentage());
+			scrollValue = Math.ceil(getScrollPercentage());
 		} else {
-			scrollValue = Math.round(scroll.y / limit.y * 100);
+			scrollValue = Math.ceil(scroll.y / limit.y * 100);
 		}
 
 		let strokeValue = 354 - 354 / 100 * scrollValue;
@@ -80,7 +80,7 @@ function init() {
 			$(ancoreTop).removeClass('js-page-end');
 		}
 
-		if (scrollValue > 98) {
+		if (scrollValue >= 98) {
 			$(ancoreTop).addClass('js-page-end');
 		}
 
@@ -105,12 +105,13 @@ function init() {
 			$(headerPage).css('padding-top', `${paddingTop}px`);
 		}
 		locomotiveScroll.update();
-		// new ResizeObserver(() => locomotiveScroll.update()).observe(
-		// 	document.querySelector('[data-scroll-container]'),
-		// );
+		new ResizeObserver(() => locomotiveScroll.update()).observe(
+			document.querySelector('[data-scroll-container]'),
+		);
 	}
 
 	window.addEventListener('resize', resize);
+	window.onload = setTimeout(resize, 200);
 }
 
 export default {

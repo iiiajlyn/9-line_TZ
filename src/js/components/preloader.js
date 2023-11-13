@@ -77,16 +77,19 @@ if (!getCookie('lastActivity') && !psi) {
 	// Прогресс
 	let progressTick = setInterval(() => {
 		paceProgress(preloaderImg, windowWidth, windowHeight, progressLoad);
-	}, 1050);
-	Pace.on('progress', (progress) => {
-		progressLoad = Math.ceil(progress) / 100;
-		if (progressLoad >= 1) {
+		if (progressLoad >= 0.9) {
 			Pace.stop();
 			setTimeout(() => {
 				removeFadeOut(preloader, 500);
 				clearInterval(progressTick);
-			}, 500);
+			}, 1050);
 		}
+	}, 1050);
+	Pace.on('progress', (progress) => {
+		progressLoad = Math.ceil(progress) / 100;
+		// if (progressLoad >= 1) {
+		// 	Pace.stop();
+		// }
 	});
 
 	// Конец

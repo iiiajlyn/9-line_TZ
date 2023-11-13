@@ -26,7 +26,7 @@ const init = () => {
 			/**
 			* Если скролл и пользователь не в конце удаляем класс стрелку
 			*/
-			if (getScrollPercentage() < 99 && $('.ancore-top').hasClass('js-page-end')) {
+			if (getScrollPercentage() <= 99 && $('.ancore-top').hasClass('js-page-end')) {
 				$('.ancore-top').removeClass('js-page-end');
 			}
 
