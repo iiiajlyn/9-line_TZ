@@ -95,8 +95,17 @@ if (!getCookie('lastActivity') && !psi) {
 	// Конец
 	Pace.on('done', () => {
 		setTimeout(() => {
-			document.querySelector('.pace-inactive').remove();
-			document.querySelector('.pace-active').remove();
+			let paceInactive = document.querySelector('.pace-inactive');
+			let paceActive = document.querySelector('.pace-active');
+
+			if (paceInactive) {
+				paceInactive.remove();
+			}
+
+			if (paceActive) {
+				paceActive.remove();
+			}
+
 			document.querySelector('body').classList.remove('pace-running');
 			document.querySelector('body').classList.remove('pace-done');
 		}, 1000);
