@@ -36,7 +36,8 @@
 			transform: translateX(100%);
 			transition:
 				opacity $duration-normal,
-				transform $duration-normal;
+				transform $duration-normal,
+				visibility $duration-normal;
 			-webkit-overflow-scrolling: touch;
 		}
 
