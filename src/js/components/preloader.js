@@ -47,7 +47,8 @@ function removeFadeOut(el, speed) {
 }
 
 function paceProgress(img, width, height, progress) {
-	img.style.transform = `translateX(${width * progress}px) translateY(-${height * progress}px)`;
+	img.style.transform = `translateX(${Math.ceil(width * progress)}px) translateY(-${Math.ceil(height * progress)}px)`;
+	console.log(Math.ceil(height * progress));
 }
 
 // Прелоадер;
@@ -77,7 +78,7 @@ if (!getCookie('lastActivity') && !psi) {
 	// Прогресс
 	let progressTick = setInterval(() => {
 		paceProgress(preloaderImg, windowWidth, windowHeight, progressLoad);
-	}, 1000);
+	}, 1010);
 	Pace.on('progress', (progress) => {
 		progressLoad = Math.ceil(progress) / 100;
 		if (progressLoad >= 1) {
