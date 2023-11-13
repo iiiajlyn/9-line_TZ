@@ -207,6 +207,7 @@
 		background-color: currentColor;
 		transition:
 			opacity $duration-normal,
+			transform $duration-normal,
 			color $duration-normal;
 	}
 
