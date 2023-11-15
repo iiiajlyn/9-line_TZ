@@ -196,8 +196,6 @@ html(class=html.classList)&attributes(html.attrs)
 				each fontURL, key in fontsURL
 					link(rel="preload" as="font" href!=`${baseDir}fonts/${fontURL}.woff2`)
 			link(rel="preload" as="style" href!=`${baseDir}css/${pageName}.css?v=${Date.now()}`)
-			link(rel="preload" as="script" href!=`${baseDir}js/vendor.js?v=${Date.now()}`)
-			link(rel="preload" as="script" href!=`${baseDir}js/${pageName}.js?v=${Date.now()}`)
 			if link.appleTouchIconPrecomposed !== null
 				link(rel="apple-touch-icon-precomposed" href!=link.appleTouchIconPrecomposed)
 			if link.appleTouchIconPrecomposed40x40 !== null
