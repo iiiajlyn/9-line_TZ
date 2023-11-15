@@ -1,10 +1,11 @@
 const path = require('path');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
 	entry: {
 		index: './src/js/index.js',
 		preloader: './src/js/components/preloader.js',
+		vendor: ['jquery', 'locomotive-scroll'],
 	},
 	output: {
 		path: path.resolve(__dirname, 'build/js'),
@@ -35,6 +36,6 @@ module.exports = {
 		},
 	},
 	plugins: [
-		// new BundleAnalyzerPlugin(),
+		new BundleAnalyzerPlugin(),
 	],
 };
