@@ -281,6 +281,7 @@ html(class=html.classList)&attributes(html.attrs)
 				each fontURL in fontsURL
 					link(rel="preload", as="font", type="font/woff2", href=`${baseDir}fonts/${fontURL}.woff2`, crossorigin)
 		block styles
+			link(rel="preload" as="style" type="text/css" href!=`${baseDir}css/${pageName}.css?v=${Date.now()}`)
 			link(rel="stylesheet" type="text/css" href!=`${baseDir}css/${pageName}.css?v=${Date.now()}`)
 		block head-end
 	body(class=body.classList)&attributes(body.attrs)
