@@ -116,6 +116,14 @@ block vars
 doctype html
 html(class=html.classList)&attributes(html.attrs)
 	head
+		block preload
+			link(rel="preload" as="script" href!=`${baseDir}js/preloader.js?v=${Date.now()}`)
+			if fontsURL
+				each fontURL in fontsURL
+					link(rel="preload", as="font", type="font/woff2", href=`${baseDir}fonts/${fontURL}.woff2`, crossorigin)
+			link(rel="preload" as="style" href!=`${baseDir}css/${pageName}.css?v=${Date.now()}`)
+			link(rel="preload" as="script" href!=`${baseDir}js/vendor.js?v=${Date.now()}`)
+			link(rel="preload" as="script" href!=`${baseDir}js/${pageName}.js?v=${Date.now()}`)
 		script(async src!=`${baseDir}js/preloader.js?v=${Date.now()}`)
 		block head-start
 		block meta
@@ -276,12 +284,7 @@ html(class=html.classList)&attributes(html.attrs)
 				link(rel="manifest" href!=link.manifest)
 			if link.maskIcon.href !== null
 				link(rel="mask-icon" href!=link.maskIcon.href color=link.maskIcon.color)
-		block preload
-			if fontsURL
-				each fontURL in fontsURL
-					link(rel="preload", as="font", type="font/woff2", href=`${baseDir}fonts/${fontURL}.woff2`, crossorigin)
 		block styles
-			link(rel="preload" as="style" type="text/css" href!=`${baseDir}css/${pageName}.css?v=${Date.now()}`)
 			link(rel="stylesheet" type="text/css" href!=`${baseDir}css/${pageName}.css?v=${Date.now()}`)
 		block head-end
 	body(class=body.classList)&attributes(body.attrs)
