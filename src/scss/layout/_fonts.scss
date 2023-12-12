@@ -1,5 +1,5 @@
-// $urlRedactedScript: "./fonts/redactedScript/RedactedScript-";
-// $urlFlowCircular: "./fonts/flowCircular/FlowCircular-Regular";
+$urlRedactedScript: "./fonts/redactedScript/RedactedScript-";
+$urlFlowCircular: "./fonts/flowCircular/FlowCircular-Regular";
 $urlSFProDisplay: "../fonts/sf-pro-display/SFProDisplay-";
 
 /**
@@ -11,11 +11,11 @@ $urlSFProDisplay: "../fonts/sf-pro-display/SFProDisplay-";
 /**
 * RedactedScript
 */
-// @include font-face($urlRedactedScript + "Bold", "Redacted Script", bold, normal);
-// @include font-face($urlRedactedScript + "Bold", "Redacted Script", 700, normal);
-// @include font-face($urlRedactedScript + "Regular", "Redacted Script", normal, normal);
-// @include font-face($urlRedactedScript + "Regular", "Redacted Script", 400, normal);
-// @include font-face($urlRedactedScript + "Light", "Redacted Script", 300, normal);
+@include font-face($urlRedactedScript + "Bold", "Redacted Script", bold, normal);
+@include font-face($urlRedactedScript + "Bold", "Redacted Script", 700, normal);
+@include font-face($urlRedactedScript + "Regular", "Redacted Script", normal, normal);
+@include font-face($urlRedactedScript + "Regular", "Redacted Script", 400, normal);
+@include font-face($urlRedactedScript + "Light", "Redacted Script", 300, normal);
 
 /**
 * SFProDisplay

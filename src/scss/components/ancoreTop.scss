@@ -7,6 +7,7 @@
 	justify-content: center;
 	padding-right: env(safe-area-inset-right, 12px);
 	padding-left: env(safe-area-inset-left, 12px);
+	font-family: "SF Pro Display";
 	transition:
 		opacity $duration-normal,
 		transform $duration-normal;
