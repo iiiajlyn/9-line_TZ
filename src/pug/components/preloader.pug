@@ -27,4 +27,7 @@ script.
 		preloaderImg.classList.add('preloader__img');
 		document.getElementsByTagName('body')[0].appendChild(preloader);
 		preloader.prepend(preloaderImg);
+		var script = document.createElement("script");
+		script.src = "./js/preloader.js";
+		document.getElementsByTagName('head')[0].appendChild(script);
 	}
