@@ -196,6 +196,7 @@ html(class=html.classList)&attributes(html.attrs)
 				each fontURL, key in fontsURL
 					link(rel="preload" as="font" href!=`${baseDir}fonts/${fontURL}.woff2` crossorigin)
 			link(rel="preload" as="style" href!=`${baseDir}css/${pageName}.css?v=${Date.now()}`)
+			link(rel="preload" as="script" href!=`${baseDir}js/preloader.js?v=${Date.now()}`)
 			if link.appleTouchIconPrecomposed !== null
 				link(rel="apple-touch-icon-precomposed" href!=link.appleTouchIconPrecomposed)
 			if link.appleTouchIconPrecomposed40x40 !== null
@@ -285,6 +286,7 @@ html(class=html.classList)&attributes(html.attrs)
 		block head-end
 	body(class=body.classList)&attributes(body.attrs)
 		block body-start
+		include ../components/preloader
 		.site(data-scroll-container)
 			include _data
 			include header

@@ -52,15 +52,12 @@ function paceProgress(img, width, height, progress) {
 
 // Прелоадер;
 if (!getCookie('lastActivity') && !psi) {
-	let preloader = document.createElement('div');
-	let preloaderImg = document.createElement('div');
+	let preloader = document.querySelector('.preloader');
+	let preloaderImg = preloader.querySelector('.preloader__img');
 	let progressLoad = 0;
 	let windowWidth = window.innerWidth + 591;
 	let windowHeight = window.innerHeight + 591;
-	preloader.classList.add('preloader');
-	preloaderImg.classList.add('preloader__img');
-	document.querySelector('.site').before(preloader);
-	preloader.prepend(preloaderImg);
+
 	// Опции
 	Pace.options = {
 		ajax: false,
