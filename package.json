@@ -1,8 +1,8 @@
 {
-	"name": "ninelines-template",
+	"name": "Abyshev",
 	"version": "3.0.4",
 	"description": "Шаблон для разработки сайтов",
-	"repository": "ninelines-team/ninelines-template",
+	"repository": "https://github.com/iiiajlyn/New-project_gupl_webpack_scss_pug_locomotive-scroll.git",
 	"scripts": {
 		"gulp": "gulp",
 		"build": "gulp build",
@@ -10,7 +10,7 @@
 		"lint": "eslint --debug src/",
 		"lint:fix": "eslint --debug src/ -- --fix"
 	},
-	"author": "Ninelines Agency <info@ninelines.agency>",
+	"author": "Abyshev Ivan",
 	"license": "ISC",
 	"private": true,
 	"devDependencies": {
