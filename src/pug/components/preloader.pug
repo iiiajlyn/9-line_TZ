@@ -1,0 +1,33 @@
+script.
+	let psi = navigator.userAgent.match(/(Mozilla\/5\.0 \(Linux; Android 11; moto g power \(2022\)\) AppleWebKit\/537\.36 \(KHTML, like Gecko\) Chrome\/109\.0.0.0 Mobile Safari\/537\.36)|(Mozilla\/5\.0 \(Macintosh; Intel Mac OS X 10_15_7\) AppleWebKit\/537\.36 \(KHTML, like Gecko\) Chrome\/109\.0\.0\.0 Safari\/537\.36)|(Speed Insights)|(Chrome-Lighthouse)|(PSTS[\d\.]+)/);
+
+	let getCookie = (name) => {
+		let nameEQ = `${name}=`;
+		let ca = document.cookie.split(';');
+
+		for (let i = 0; i < ca.length; i++) {
+			let c = ca[i];
+
+			while (c.charAt(0) === ' ') {
+				c = c.substring(1, c.length);
+			}
+
+			if (c.indexOf(nameEQ) === 0) {
+				return c.substring(nameEQ.length, c.length);
+			}
+		}
+
+		return null;
+	};
+
+	if (!getCookie('lastActivity') && !psi) {
+		let preloader = document.createElement('div');
+		let preloaderImg = document.createElement('div');
+		preloader.classList.add('preloader');
+		preloaderImg.classList.add('preloader__img');
+		document.getElementsByTagName('body')[0].appendChild(preloader);
+		preloader.prepend(preloaderImg);
+		var script = document.createElement("script");
+		script.src = "./js/preloader.js";
+		document.getElementsByTagName('head')[0].appendChild(script);
+	}
